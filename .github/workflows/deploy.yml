@@ -28,10 +28,14 @@ jobs:
       - name: Build ja
         run: mdbook build ja
 
+      - name: Build en
+        run: mdbook build en
+
       - name: Assemble site
         run: |
-          mkdir -p _site/ja
+          mkdir -p _site/ja _site/en
           cp -r ja/book/. _site/ja/
+          cp -r en/book/. _site/en/
           cp landing/index.html _site/index.html
 
       - name: Upload Pages artifact
