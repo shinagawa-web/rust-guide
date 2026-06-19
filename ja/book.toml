@@ -1,0 +1,16 @@
+[book]
+title = "Why-first Rust 学習ガイド"
+authors = ["shinagawa-web"]
+language = "ja"
+src = "src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/shinagawa-web/rust-guide"
+edit-url-template = "https://github.com/shinagawa-web/rust-guide/edit/main/ja/src/{path}"
+additional-css = ["theme/custom.css"]
+
+[output.html.fold]
+enable = true
+level = 1
