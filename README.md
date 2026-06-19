@@ -64,9 +64,11 @@ cargo install mdbook
 mdbook --version
 ```
 
-**動作確認バージョン:**
-- Rust: 1.95.0（ローカル） / CI: GitHub Actions の Ubuntu 標準
-- mdbook: 0.4.40（CI でピン留め） / 0.5.3（ローカル動作確認）
+**動作確認バージョン（ローカル）:**
+- Rust: 1.95.0
+- mdbook: 0.5.3
+
+CI では mdbook 0.4.40 をピン留めしてビルドのみ実行しています（Rust ツールチェーンは使用していません）。
 
 ---
 
