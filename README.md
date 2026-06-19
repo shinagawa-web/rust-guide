@@ -61,12 +61,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install mdbook
 
 # バージョン確認
-mdbook --version  # mdbook 0.4.x
+mdbook --version
 ```
 
-**動作確認バージョン:**
-- Rust: 1.75.0 以上
-- mdbook: 0.4.40 以上
+**動作確認バージョン（ローカル）:**
+- Rust: 1.95.0
+- mdbook: 0.5.3
+
+CI では mdbook 0.4.40 をピン留めしてビルドのみ実行しています（Rust ツールチェーンは使用していません）。
 
 ---
 
