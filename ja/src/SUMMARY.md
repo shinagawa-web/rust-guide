@@ -66,3 +66,9 @@
   - [スマートポインタ](concepts/smart-pointers.md)
   - [ジェネリクス](concepts/generics.md)
   - [並行性](concepts/concurrency.md)
+
+---
+
+# 付録
+
+- [Rust Playground を使い込む](intro/playground-advanced.md)
