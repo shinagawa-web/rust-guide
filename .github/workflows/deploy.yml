@@ -25,6 +25,20 @@ jobs:
         with:
           mdbook-version: '0.4.40'
 
+      # ja/book.toml が mermaid preprocessor を宣言しているため、バイナリが無いと
+      # `mdbook build ja` が失敗する。再現性のためバージョンを固定する。
+      # 0.16.2 は mdbook 0.4.x 系（CI の 0.4.40）と互換のある最終バージョン。
+      # 0.17.0 以降は mdbook 0.5.x 向けで preprocessor プロトコルが非互換。
+      - name: Setup mdbook-mermaid
+        env:
+          MDBOOK_MERMAID_VERSION: '0.16.2'
+        run: |
+          url="https://github.com/badboy/mdbook-mermaid/releases/download/v${MDBOOK_MERMAID_VERSION}/mdbook-mermaid-v${MDBOOK_MERMAID_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          mkdir -p "$HOME/.local/bin"
+          curl -sSL "$url" | tar -xz -C "$HOME/.local/bin" mdbook-mermaid
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/mdbook-mermaid" --version
+
       - name: Build ja
         run: mdbook build ja
 
