@@ -6,6 +6,6 @@
 
 ## impl とメソッド
 
-## enum とパターンマッチ
+## enum と match
 
 <!-- 補助: Go の struct / レシーバとの対比 -->

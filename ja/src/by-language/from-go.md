@@ -4,13 +4,26 @@
 
 Go 経験者向けに、**Rust の基礎を一から順番に積む**入門です。Go との対比は理解を助ける補助として挟みます。
 
+## この構成について
+
+Go 経験者なら「Go との差分だけ拾い読みしたい」と感じるかもしれません。それでもこのセクションを**差分の寄せ集めではなく、基礎から積む構成**にしたのには理由があります。
+
+- **Rust の概念は所有権を中心に連鎖している。** 借用・ライフタイム・トレイト・エラー処理は所有権の上に積み上がるため、差分をつまみ食いすると土台が抜けて、かえって遠回りになります。
+- **だから順番に積む方が結局速い。** 章の並びは [The Rust Book](https://doc.rust-lang.org/book/) に沿った標準的な学習順（型 → 制御フロー → 所有権 → 構造体 …）にしています。
+- **Go との差分は各章の中で補助として添える。** 「Go ではこう、Rust ではこう」を要所で示し、既存の知識を足場にできるようにします。
+- **章は独立ページに分割。** 必要なところだけ参照したり、詰まった概念に戻ったりしやすくしています。
+
 ## 章立て
 
 1. [ツールチェーンとプロジェクト](from-go/toolchain.md)
 2. [変数と可変性](from-go/variables.md)
 3. [基本の型とデータ構造](from-go/types.md)
-4. [所有権と借用](from-go/ownership.md)
-5. [構造体とメソッド](from-go/structs.md)
-6. [トレイト](from-go/traits.md)
-7. [エラーハンドリングと Option](from-go/error-handling.md)
-8. [並行性](from-go/concurrency.md)
+4. [制御フロー](from-go/control-flow.md)
+5. [所有権と借用](from-go/ownership.md)
+6. [構造体とメソッド](from-go/structs.md)
+7. [モジュール](from-go/modules.md)
+8. [エラーハンドリングと Option](from-go/error-handling.md)
+9. [トレイト](from-go/traits.md)
+10. [ジェネリクス](from-go/generics.md)
+11. [イテレータとクロージャ](from-go/iterators.md)
+12. [並行性](from-go/concurrency.md)
