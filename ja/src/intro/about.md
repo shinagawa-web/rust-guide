@@ -18,7 +18,7 @@
 |---|---|
 | [**作りたいもの別**](../by-motivation/README.md) | CLI ツール、Web バックエンド、WebAssembly など、目的が先にある人 |
 | [**レベル別**](../by-level/README.md) | 初級・中級・上級と、段階を追って積み上げたい人 |
-| [**言語別**](../by-language/README.md) | Go・Python・TypeScript など、使ってきた言語との差分から入りたい人 |
+| [**言語別**](../by-language/README.md) | Go・Python・TypeScript など、使ってきた言語に置き換えて説明されると理解が進む人 |
 
 どの入口を選ぶか迷ったら、[3つの入口の使い分け](how-to-read.md) を参照してください。
 
