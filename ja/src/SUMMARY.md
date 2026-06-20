@@ -5,7 +5,6 @@
 - [なぜこのガイドを作ったか](intro/why-this-guide.md)
 - [3つの入口の使い分け](intro/how-to-read.md)
 - [Rust Playground の使い方](intro/playground.md)
-- [Rust Playground を使い込む](intro/playground-advanced.md)
 
 ---
 
@@ -69,3 +68,9 @@
   - [スマートポインタ](concepts/smart-pointers.md)
   - [ジェネリクス](concepts/generics.md)
   - [並行性](concepts/concurrency.md)
+
+---
+
+# 付録
+
+- [Rust Playground を使い込む](intro/playground-advanced.md)
