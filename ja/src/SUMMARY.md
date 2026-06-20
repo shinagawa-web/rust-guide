@@ -41,7 +41,6 @@
   - [Python から](by-language/from-python.md)
   - [TypeScript から](by-language/from-typescript.md)
   - [C から](by-language/from-c.md)
-    - [ツールチェーンと最初の一歩](by-language/from-c/toolchain.md)
     - [変数と型](by-language/from-c/variables.md)
     - [制御構文](by-language/from-c/control-flow.md)
     - [関数](by-language/from-c/functions.md)
