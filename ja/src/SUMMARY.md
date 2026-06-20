@@ -26,7 +26,6 @@
 
 - [言語別](by-language/README.md)
   - [Go から](by-language/from-go.md)
-    - [ツールチェーンとプロジェクト](by-language/from-go/toolchain.md)
     - [変数と可変性](by-language/from-go/variables.md)
     - [基本の型とデータ構造](by-language/from-go/types.md)
     - [制御フロー](by-language/from-go/control-flow.md)
