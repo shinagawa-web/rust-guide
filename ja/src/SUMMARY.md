@@ -2,8 +2,6 @@
 
 [このガイドについて](intro/about.md)
 
-# はじめに
-
 - [なぜこのガイドを作ったか](intro/why-this-guide.md)
 - [3つの入口の使い分け](intro/how-to-read.md)
 - [Rust Playground の使い方](intro/playground.md)
