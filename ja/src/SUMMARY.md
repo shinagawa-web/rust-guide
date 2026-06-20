@@ -30,6 +30,7 @@
   - [Go から](by-language/from-go.md)
   - [Python から](by-language/from-python.md)
   - [TypeScript から](by-language/from-typescript.md)
+  - [C から](by-language/from-c.md)
   - [C++ から](by-language/from-cpp.md)
   - [Java から](by-language/from-java.md)
 
