@@ -13,7 +13,7 @@ fn main() {
 }
 ```
 
-[▶ この例を Rust Playground で開く](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=fn%20main%28%29%20%7B%0A%20%20%20%20let%20name%20%3D%20%22Rust%22%3B%0A%20%20%20%20println%21%28%22Hello%2C%20%7Bname%7D%21%22%29%3B%0A%7D%0A)
+<a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2021&amp;code=fn%20main%28%29%20%7B%0A%20%20%20%20let%20name%20%3D%20%22Rust%22%3B%0A%20%20%20%20println%21%28%22Hello%2C%20%7Bname%7D%21%22%29%3B%0A%7D%0A" target="_blank" rel="noopener noreferrer">▶ この例を Rust Playground で開く</a>
 
 リンクを開くと、上のコードが読み込まれた状態で Playground が立ち上がります。画面はおおまかに、上部のツールバーと、その下のコードエディタ、実行結果が出る下部の領域に分かれています。コードが表示された状態で実行ボタン（Run）を押すと、サーバー側でコンパイルと実行が走り、標準出力やコンパイルエラーが下に表示されます。
 
