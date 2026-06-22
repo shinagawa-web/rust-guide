@@ -19,6 +19,15 @@
 
 - [レベル別](by-level/README.md)
   - [初級](by-level/beginner.md)
+    - [イントロ](by-level/beginner/intro.md)
+    - [プロジェクトを動かす](by-level/beginner/cargo.md)
+    - [コードの地図を読む](by-level/beginner/module.md)
+    - [struct を読む](by-level/beginner/struct.md)
+    - [Option とは](by-level/beginner/option.md)
+    - [フィールドを追加する](by-level/beginner/add-field.md)
+    - [テストを直す](by-level/beginner/fix-test.md)
+    - [PR を作成する](by-level/beginner/pull-request.md)
+    - [まとめ](by-level/beginner/summary.md)
   - [中級](by-level/intermediate.md)
   - [上級](by-level/advanced.md)
 
