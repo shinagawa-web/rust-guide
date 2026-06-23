@@ -37,11 +37,11 @@ Rust の文法を網羅的に学ぶのではなく、実際の good first issue 
 以下の順で進みます。
 
 1. [プロジェクトを動かす](cargo.md) ― 環境を整えて、サーバーを起動する
-2. [Rust の基本構文](basics.md) ― コードを読むのに必要な最低限の構文を押さえる
-3. [main.rs を読む](read-main.md) ― ファイル構成と `mod` / `use` を把握し、ルーティングの仕組みを理解する
-4. [handlers.rs を読む](read-handlers.md) ― `&` / `Result` / `match` を読む
-5. [struct を読む](struct.md) ― `User` 構造体がどう定義されているかを理解する
-6. [Option とは](option.md) ― `created_at` に使う `Option` の読み方を覚える
+2. [Rust の基本構文](basics.md) ― 最低限の書き方だけ先に確認する
+3. [main.rs を読む](read-main.md) ― どのファイルに何が書かれているかを把握する
+4. [handlers.rs を読む](read-handlers.md) ― リクエストを受けて返す処理を読む
+5. [models.rs を読む](struct.md) ― ユーザーデータの定義を読む
+6. [値がないかもしれないデータを扱う](option.md) ― `created_at` に使う `Option` の読み方を覚える
 7. [フィールドを追加する](add-field.md) ― 実際に `created_at` を `User` に追加する
 8. [テストを直す](fix-test.md) ― 壊れたテストを修正して `cargo test` を通す
 9. [PR を作成する](pull-request.md) ― 変更をまとめて PR を出す

@@ -1,4 +1,4 @@
-# struct を読む
+# models.rs を読む
 
 ## struct とは
 
