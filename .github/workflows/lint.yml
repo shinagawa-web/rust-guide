@@ -12,14 +12,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup gomarklint
-        env:
-          GOMARKLINT_VERSION: '3.2.3'
         run: |
-          url="https://github.com/shinagawa-web/gomarklint/releases/download/v${GOMARKLINT_VERSION}/gomarklint_Linux_x86_64.tar.gz"
           mkdir -p "$HOME/.local/bin"
-          curl -sSL "$url" | tar -xz -C "$HOME/.local/bin" gomarklint
+          curl -sSL "https://github.com/shinagawa-web/gomarklint/releases/download/v3.2.3/gomarklint_Linux_x86_64.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin" gomarklint
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-          "$HOME/.local/bin/gomarklint" --version
+          gomarklint --version
 
       - name: Lint Markdown
         run: gomarklint --config .gomarklint.json ja/src en/src README.md CONTRIBUTING.md
