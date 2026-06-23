@@ -4,7 +4,7 @@
 
 ## エラーを読む
 
-```
+```text
 error[E0063]: missing field `created_at` in initializer of `models::User`
   --> src/handlers.rs:30:13
    |
@@ -56,7 +56,7 @@ fn app() -> Router {
 
 `cargo test` を実行して確認します。
 
-```
+```text
 failures:
     handlers::tests::test_get_user
     handlers::tests::test_get_users
@@ -75,6 +75,8 @@ Diff < left / right > :
 ```
 
 実際のレスポンスには `created_at` が含まれているのに、テストの期待値には含まれていません。`assert_json` を直します。
+
+<!-- gomarklint-disable duplicate-heading -->
 
 ```rust
 #[tokio::test]
@@ -117,7 +119,7 @@ async fn test_get_user_with_created_at() {
 
 `cargo test` を実行して全テストが通ることを確認します。
 
-```
+```text
 $ cargo test
 running 4 tests
 test handlers::tests::test_get_user_not_found ... ok
@@ -127,5 +129,7 @@ test handlers::tests::test_get_users ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
+
+<!-- gomarklint-enable duplicate-heading -->
 
 実装はここで完了です。次のページでは、今回どこを・なぜ・どう変えたかを自分の言葉でまとめます。

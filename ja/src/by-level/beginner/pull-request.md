@@ -67,6 +67,7 @@
 
 ---
 
+<!-- gomarklint-disable no-emphasis-as-heading -->
 **概要**
 
 `GET /users` と `GET /users/:id` のレスポンスに `created_at` を追加しました。
@@ -78,11 +79,11 @@
 - テストの期待値を更新し、`created_at` があるケースのテストを追加
 
 **動作確認**
+<!-- gomarklint-enable no-emphasis-as-heading -->
 
-```
+```sh
 $ curl http://localhost:3000/users/1
 {"id":1,"name":"Alice","email":"alice@example.com","created_at":null}
 ```
 
 ---
-
