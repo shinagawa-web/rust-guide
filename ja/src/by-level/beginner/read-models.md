@@ -1,16 +1,13 @@
 # models.rs を読む
 
-## struct とは
+`handlers.rs` では `get_users` も `get_user` も `User` というデータを使っていました。この `User` がどんな情報を持っているかは `models.rs` に書かれています。
 
-複数のデータをひとまとめにして扱うための仕組みです。
+## models.rs を開く
 
-たとえばユーザーには ID・名前・メールアドレスがあります。これらをバラバラに管理すると、関数に渡すたびに 3 つの引数を並べることになります。`struct` を使うと「ユーザー」という単位でひとかたまりにできます。
-
-## User を読む
-
-`models.rs` を開くと `User` がこう定義されています。
+`models.rs` を開くと、こう書かれています。
 
 ```rust
+#[derive(Clone, Serialize)]
 pub struct User {
     pub id: u32,
     pub name: String,
@@ -18,7 +15,7 @@ pub struct User {
 }
 ```
 
-`struct User { ... }` で `User` という名前の構造体を定義しています。`{` の中にフィールドを並べ、それぞれ `フィールド名: 型` の形で書きます。
+`struct` は複数のデータをひとまとめにする仕組みです。`User` には `id`・`name`・`email` の 3 つが入っています。
 
 型は次の通りです。
 
