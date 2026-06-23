@@ -40,11 +40,11 @@ Rust の文法を網羅的に学ぶのではなく、実際の good first issue 
 2. [Rust の基本構文](beginner/basics.md) ― 最低限の書き方だけ先に確認する
 3. [main.rs を読む](beginner/read-main.md) ― どのファイルに何が書かれているかを把握する
 4. [handlers.rs を読む](beginner/read-handlers.md) ― リクエストを受けて返す処理を読む
-5. [models.rs を読む](beginner/struct.md) ― ユーザーデータの定義を読む
+5. [models.rs を読む](beginner/read-models.md) ― ユーザーデータの定義を読む
 6. [値がないかもしれないデータを扱う](beginner/option.md) ― `created_at` に使う `Option` の読み方を覚える
-7. [フィールドを追加する](beginner/add-field.md) ― 実際に `created_at` を `User` に追加する
+7. [`created_at` を追加する](beginner/add-field.md) ― 実際に `created_at` を `User` に追加する
 8. [テストを直す](beginner/fix-test.md) ― 壊れたテストを修正して `cargo test` を通す
-9. [PR の説明を書く](beginner/pull-request.md) ― 変更の内容をまとめる
+9. [変更内容をまとめる](beginner/pull-request.md) ― PR を作成して何をどう変えたかを自分の言葉で書く
 10. [まとめ](beginner/summary.md) ― 理解できたことを振り返る
 
 ## このガイドで学ぶこと

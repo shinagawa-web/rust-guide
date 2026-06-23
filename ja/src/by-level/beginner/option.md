@@ -1,8 +1,8 @@
 # 値がないかもしれないデータを扱う
 
-前のページで読んだ `User` には `id`・`name`・`email` しかありません。次のページでは `created_at`（作成日時）フィールドを追加しますが、既存データには作成日がありません。他の言語なら `null` を使うところですが、Rust に `null` はありません。
+前のページで読んだ `User` には `id`・`name`・`email` しかありません。次のページでは `created_at`（作成日時）を追加しますが、既存データには作成日がありません。値があるかないか、どちらの場合も扱える型が必要です。
 
-Rust では「値があるかないか」を `Option<T>` という型で表します。
+Rust ではそのような場合に `Option<T>` を使います。
 
 ## Option の基本
 
@@ -18,19 +18,25 @@ let created_at: Option<String> = None;
 
 `Option<String>` と書くことで、「文字列か、何もないかのどちらか」という型になります。
 
-## 値を取り出す
+## if let ― 値を取り出す
 
-`Option` の中の値を使うには、`Some` か `None` かを確認する必要があります。`if let` を使うと簡潔に書けます。
+`Option` の中の値を使うには、`Some` か `None` かを確認する必要があります。
+
+`if let` を使うと、確認と取り出しを同時にできます。
 
 ```rust
-if let Some(date) = created_at {
-    println!("作成日: {}", date);
-} else {
-    println!("作成日不明");
+fn main() {
+    let created_at: Option<String> = Some("2024-01-15".to_string());
+
+    if let Some(date) = created_at {
+        println!("作成日: {}", date);
+    } else {
+        println!("作成日不明");
+    }
 }
 ```
 
-`Some` なら `date` に値が取り出され、`None` なら `else` に進みます。`match` でも書けますが、この用途は `if let` が最もシンプルです。
+`if let Some(変数) = Option の値` という形で書きます。`Some` だったとき、`{}` の中で変数を使えます。`None` だったときは `else` に進みます。
 
 ## 次のページへ
 
