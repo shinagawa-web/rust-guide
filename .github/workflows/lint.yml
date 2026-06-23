@@ -13,5 +13,4 @@ jobs:
 
       - uses: shinagawa-web/gomarklint@v3
         with:
-          args: ja/src en/src README.md CONTRIBUTING.md
           comment-on-pr: 'true'
