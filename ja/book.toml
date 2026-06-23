@@ -1,5 +1,5 @@
 [book]
-title = "Why-first Rust 学習ガイド"
+title = "なぜから始める Rust"
 authors = ["shinagawa-web"]
 language = "ja"
 src = "src"

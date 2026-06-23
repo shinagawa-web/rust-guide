@@ -1,6 +1,6 @@
 # rust-guide
 
-> **Why-first な Rust 学習ガイド**
+> **なぜから始める Rust**
 > 機能の「使い方（How）」より先に、「なぜその仕組みが言語に必要なのか（Why）」から学べるドキュメントサイト。
 
 **🌐 サイト:** [日本語](https://shinagawa-web.github.io/rust-guide/ja/) / [English](https://shinagawa-web.github.io/rust-guide/en/)
