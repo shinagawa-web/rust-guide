@@ -1,6 +1,6 @@
 # Summary
 
-[このガイドについて](intro/about.md)
+[このガイドについて](about.md)
 
 - [なぜこのガイドを作ったか](intro/why-this-guide.md)
 - [3つの入口の使い分け](intro/how-to-read.md)

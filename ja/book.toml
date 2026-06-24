@@ -20,3 +20,4 @@ level = 1
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
