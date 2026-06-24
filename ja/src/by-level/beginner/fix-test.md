@@ -4,7 +4,7 @@
 
 ## エラーを読む
 
-```
+```text
 error[E0063]: missing field `created_at` in initializer of `models::User`
   --> src/handlers.rs:30:13
    |
@@ -56,7 +56,7 @@ fn app() -> Router {
 
 `cargo test` を実行して確認します。
 
-```
+```text
 failures:
     handlers::tests::test_get_user
     handlers::tests::test_get_users
@@ -117,7 +117,7 @@ async fn test_get_user_with_created_at() {
 
 `cargo test` を実行して全テストが通ることを確認します。
 
-```
+```text
 $ cargo test
 running 4 tests
 test handlers::tests::test_get_user_not_found ... ok

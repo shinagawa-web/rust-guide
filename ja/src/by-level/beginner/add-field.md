@@ -20,7 +20,7 @@ pub struct User {
 
 保存して `cargo build` を実行します。
 
-```
+```text
 error[E0063]: missing field `created_at` in initializer of `User`
   --> src/main.rs:11:9
    |
@@ -69,14 +69,14 @@ let db = vec![
 
 既存ユーザーは `created_at` が `null` です。
 
-```
+```sh
 $ curl http://localhost:3000/users/1
 {"id":1,"name":"Alice","email":"alice@example.com","created_at":null}
 ```
 
 新しく追加した Carol は値が入っています。
 
-```
+```sh
 $ curl http://localhost:3000/users/3
 {"id":3,"name":"Carol","email":"carol@example.com","created_at":"2026-01-15T09:30:00Z"}
 ```
@@ -85,7 +85,7 @@ $ curl http://localhost:3000/users/3
 
 続けて `cargo test` を実行します。
 
-```
+```text
 error[E0063]: missing field `created_at` in initializer of `models::User`
   --> src/handlers.rs:30:13
    |

@@ -6,7 +6,7 @@
 
 プロジェクトのソースコードは `src/` ディレクトリにあります。
 
-```
+```text
 src/
 ├── main.rs
 ├── handlers.rs

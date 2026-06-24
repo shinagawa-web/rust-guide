@@ -6,7 +6,7 @@
 
 コンテンツ本体は `concepts/` に共通の部品として置き、`by-motivation/`・`by-level/`・`by-language/` 配下の各入口から `{{#include}}` で composition しています。`concepts/` のファイルを編集すると、それを include しているすべての入口に反映されます。新しいページを追加する場合は `SUMMARY.md` への追記も忘れずに。
 
-```
+```text
 ja/                  # 日本語版
 en/                  # 英語版（ja/ と同じ構造）
 └── src/
