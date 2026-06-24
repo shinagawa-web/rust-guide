@@ -14,7 +14,7 @@
 
 | 入口 | こんな人に |
 |---|---|
-| [作りたいもの別](../by-motivation/README.md) | CLI ツール、Web バックエンド、WebAssembly など、目的が先にある人 |
+| 作りたいもの別（[Web バックエンド](../web-backend/README.md)・[CLI](../cli/README.md) など） | 目的が先にある人 |
 | [レベル別](../by-level/README.md) | 初級・中級・上級から、自分の現場や目的に必要なレベルを選んで学びたい人 |
 | [言語別](../by-language/README.md) | Go・Python・TypeScript など、使ってきた言語に置き換えて説明されると理解が進む人 |
 
