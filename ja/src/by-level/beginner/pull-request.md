@@ -67,19 +67,17 @@
 
 ---
 
-<!-- gomarklint-disable no-emphasis-as-heading -->
-**概要**
+### 概要
 
 `GET /users` と `GET /users/:id` のレスポンスに `created_at` を追加しました。
 
-**変更内容**
+### 変更内容
 
 - `models.rs` の `User` に `created_at: Option<String>` を追加
 - `main.rs` の初期データに `created_at` を設定（既存ユーザーは `None`）
 - テストの期待値を更新し、`created_at` があるケースのテストを追加
 
-**動作確認**
-<!-- gomarklint-enable no-emphasis-as-heading -->
+### 動作確認
 
 ```sh
 $ curl http://localhost:3000/users/1

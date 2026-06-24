@@ -72,14 +72,10 @@ use models::User;
 
 ## main() を読む
 
-<!-- gomarklint-disable duplicate-heading -->
-
 ```rust
 #[tokio::main]
 async fn main() {
 ```
-
-<!-- gomarklint-enable duplicate-heading -->
 
 `fn main()` は前のページで学んだ関数の定義で、プログラムはここから動き始めます。`#[tokio::main]` と `async` は非同期処理のための記述です。axum を使うときに必要になりますが、今は読み飛ばして構いません。
 

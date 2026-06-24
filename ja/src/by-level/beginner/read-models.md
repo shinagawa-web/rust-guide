@@ -31,16 +31,12 @@ pub struct User {
 
 `User` の定義の直前に `#[derive(Clone, Serialize)]` があります。
 
-<!-- gomarklint-disable duplicate-heading -->
-
 ```rust
 #[derive(Clone, Serialize)]
 pub struct User {
     ...
 }
 ```
-
-<!-- gomarklint-enable duplicate-heading -->
 
 `#[derive(...)]` は、指定した機能を自動で実装する仕組みです。手で書かなくていい決まりきったコードを、コンパイラが生成してくれます。
 

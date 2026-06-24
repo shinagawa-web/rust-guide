@@ -76,8 +76,6 @@ Diff < left / right > :
 
 実際のレスポンスには `created_at` が含まれているのに、テストの期待値には含まれていません。`assert_json` を直します。
 
-<!-- gomarklint-disable duplicate-heading -->
-
 ```rust
 #[tokio::test]
 async fn test_get_users() {
@@ -129,7 +127,5 @@ test handlers::tests::test_get_users ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
-
-<!-- gomarklint-enable duplicate-heading -->
 
 実装はここで完了です。次のページでは、今回どこを・なぜ・どう変えたかを自分の言葉でまとめます。
