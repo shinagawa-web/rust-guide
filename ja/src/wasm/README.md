@@ -1,3 +1,3 @@
-# WebAssembly を試したい
+# WebAssembly
 
 > 🚧 このページは現在準備中です。

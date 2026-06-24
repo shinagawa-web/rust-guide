@@ -14,3 +14,31 @@ jobs:
       - uses: shinagawa-web/gomarklint@v3
         with:
           comment-on-pr: 'true'
+
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup mdbook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: '0.4.40'
+
+      - name: Setup mdbook-mermaid
+        env:
+          MDBOOK_MERMAID_VERSION: '0.16.2'
+        run: |
+          url="https://github.com/badboy/mdbook-mermaid/releases/download/v${MDBOOK_MERMAID_VERSION}/mdbook-mermaid-v${MDBOOK_MERMAID_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          mkdir -p "$HOME/.local/bin"
+          curl -sSL "$url" | tar -xz -C "$HOME/.local/bin" mdbook-mermaid
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Build ja
+        run: mdbook build ja
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --exclude-path 'ja/book/404.html' --exclude-path 'ja/book/print.html' 'ja/book/**/*.html'
+          fail: true

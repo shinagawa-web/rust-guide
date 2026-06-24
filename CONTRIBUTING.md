@@ -4,7 +4,7 @@
 
 ## 構成
 
-コンテンツ本体は `concepts/` に共通の部品として置き、`by-motivation/`・`by-level/`・`by-language/` 配下の各入口から `{{#include}}` で composition しています。`concepts/` のファイルを編集すると、それを include しているすべての入口に反映されます。新しいページを追加する場合は `SUMMARY.md` への追記も忘れずに。
+コンテンツ本体は `concepts/` に共通の部品として置き、`by-level/`・`by-language/`・各ジャンルディレクトリ配下の各入口から `{{#include}}` で composition しています。`concepts/` のファイルを編集すると、それを include しているすべての入口に反映されます。新しいページを追加する場合は `SUMMARY.md` への追記も忘れずに。
 
 ```text
 ja/                  # 日本語版
@@ -12,10 +12,14 @@ en/                  # 英語版（ja/ と同じ構造）
 └── src/
     ├── SUMMARY.md
     ├── intro/
-    ├── by-motivation/  # きっかけ別
-    ├── by-level/       # レベル別
-    ├── by-language/    # 言語別
-    └── concepts/       # コンテンツ本体（部品）
+    ├── by-level/        # レベル別（ナビゲーション）
+    ├── web-backend/     # Web バックエンドガイド
+    ├── cli/             # CLI ツールガイド
+    ├── wasm/            # WebAssembly ガイド
+    ├── low-level/       # 低レイヤ・システムガイド
+    ├── embedded/        # 組み込みガイド
+    ├── by-language/     # 言語別
+    └── concepts/        # コンテンツ本体（部品）
 ```
 
 コード例には極力 [Rust Playground](https://play.rust-lang.org/) へのリンクを付けています。

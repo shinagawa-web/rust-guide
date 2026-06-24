@@ -1,6 +1,6 @@
 # Summary
 
-[このガイドについて](intro/about.md)
+[このガイドについて](about.md)
 
 - [なぜこのガイドを作ったか](intro/why-this-guide.md)
 - [3つの入口の使い分け](intro/how-to-read.md)
@@ -10,18 +10,27 @@
 
 - [レベル別](by-level/README.md)
   - [初級](by-level/beginner.md)
-    - [プロジェクトを動かす](by-level/beginner/cargo.md)
-    - [Rust の基本構文](by-level/beginner/basics.md)
-    - [main.rs を読む](by-level/beginner/read-main.md)
-    - [handlers.rs を読む](by-level/beginner/read-handlers.md)
-    - [models.rs を読む](by-level/beginner/read-models.md)
-    - [値がないかもしれないデータを扱う](by-level/beginner/option.md)
-    - [`created_at` を追加する](by-level/beginner/add-field.md)
-    - [テストを直す](by-level/beginner/fix-test.md)
-    - [変更内容をまとめる](by-level/beginner/pull-request.md)
-    - [まとめ](by-level/beginner/summary.md)
   - [中級](by-level/intermediate.md)
   - [上級](by-level/advanced.md)
+
+---
+
+- [Web バックエンド](web-backend/README.md)
+  - [初級](web-backend/beginner.md)
+    - [プロジェクトを動かす](web-backend/beginner/cargo.md)
+    - [Rust の基本構文](web-backend/beginner/basics.md)
+    - [main.rs を読む](web-backend/beginner/read-main.md)
+    - [handlers.rs を読む](web-backend/beginner/read-handlers.md)
+    - [models.rs を読む](web-backend/beginner/read-models.md)
+    - [値がないかもしれないデータを扱う](web-backend/beginner/option.md)
+    - [`created_at` を追加する](web-backend/beginner/add-field.md)
+    - [テストを直す](web-backend/beginner/fix-test.md)
+    - [変更内容をまとめる](web-backend/beginner/pull-request.md)
+    - [まとめ](web-backend/beginner/summary.md)
+- [CLI ツール](cli/README.md)
+- [WebAssembly](wasm/README.md)
+- [低レイヤ・システム](low-level/README.md)
+- [組み込み](embedded/README.md)
 
 ---
 
@@ -54,15 +63,6 @@
     - [Cargo と次に読む場所](by-language/from-c/cargo-and-next.md)
   - [C++ から](by-language/from-cpp.md)
   - [Java から](by-language/from-java.md)
-
----
-
-- [作りたいもの別](by-motivation/README.md)
-  - [CLI ツールを作りたい](by-motivation/cli.md)
-  - [Web バックエンドを書きたい](by-motivation/web-backend.md)
-  - [WebAssembly を試したい](by-motivation/wasm.md)
-  - [低レイヤ・システムプログラミング](by-motivation/low-level.md)
-  - [組み込み開発](by-motivation/embedded.md)
 
 ---
 
