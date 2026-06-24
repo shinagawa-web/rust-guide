@@ -4,9 +4,11 @@
 
 ## ガイドを選ぶ
 
-| ガイド | 題材 |
-| --- | --- |
-| [Web バックエンド 初級](../web-backend/beginner.md) | axum を使った Web サーバーの good first issue を解く |
-| CLI ツール 初級 | 🚧 準備中 |
+| ガイド | 題材 | 目安 |
+| --- | --- | --- |
+| [Web バックエンド 初級](../web-backend/beginner.md) | axum を使った Web サーバーの good first issue を解く | 約 2 時間 |
+| CLI ツール 初級 | 🚧 準備中 | — |
+
+目安はページ数と文字数から算出しています。コードを手元で動かしながら読む場合の時間です。
 
 どれにするか迷ったら [Web バックエンド 初級](../web-backend/beginner.md) から始めてください。Web 開発の経験がなくても読み進められます。
