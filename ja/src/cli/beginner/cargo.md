@@ -20,7 +20,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 公式サイトからインストーラーをダウンロードして実行します。
 
-<a href="https://rustup.rs" target="_blank" rel="noopener noreferrer">https://rustup.rs</a>
+[rustup.rs](https://rustup.rs)
 
 ### インストールの確認
 
