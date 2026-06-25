@@ -28,6 +28,8 @@
     - [変更内容をまとめる](web-backend/beginner/pull-request.md)
     - [まとめ](web-backend/beginner/summary.md)
 - [CLI ツール](cli/README.md)
+  - [初級](cli/beginner.md)
+    - [プロジェクトを動かす](cli/beginner/cargo.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
 - [組み込み](embedded/README.md)
