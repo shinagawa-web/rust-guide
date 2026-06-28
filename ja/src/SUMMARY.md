@@ -31,6 +31,7 @@
   - [初級](cli/beginner.md)
     - [プロジェクトを動かす](cli/beginner/cargo.md)
     - [Rust の基本構文](cli/beginner/basics.md)
+    - [CLI の基本](cli/beginner/cli-basics.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
 - [組み込み](embedded/README.md)
