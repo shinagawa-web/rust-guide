@@ -74,3 +74,4 @@ lines: 2  chars: 9  bytes: 23
 2. [Rust の基本構文](beginner/basics.md)
 3. [CLI の基本](beginner/cli-basics.md)
 4. [main.rs を読む](beginner/read-main.md)
+5. [counter.rs を読む](beginner/read-counter.md)
