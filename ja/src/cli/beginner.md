@@ -71,3 +71,4 @@ lines: 2  chars: 9  bytes: 23
 以下の順で進みます。
 
 1. [プロジェクトを動かす](beginner/cargo.md)
+2. [Rust の基本構文](beginner/basics.md)
