@@ -76,3 +76,4 @@ lines: 2  chars: 9  bytes: 23
 4. [main.rs を読む](beginner/read-main.md)
 5. [counter.rs を読む](beginner/read-counter.md)
 6. [文字数を正しく数える](beginner/count-chars.md)
+7. [テストを追加する](beginner/add-test.md)

@@ -35,6 +35,7 @@
     - [main.rs を読む](cli/beginner/read-main.md)
     - [counter.rs を読む](cli/beginner/read-counter.md)
     - [文字数を正しく数える](cli/beginner/count-chars.md)
+    - [テストを追加する](cli/beginner/add-test.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
 - [組み込み](embedded/README.md)
