@@ -36,6 +36,7 @@
     - [counter.rs を読む](cli/beginner/read-counter.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
+  - [初級](low-level/beginner.md)
 - [組み込み](embedded/README.md)
 
 ---
