@@ -75,3 +75,4 @@ lines: 2  chars: 9  bytes: 23
 3. [CLI の基本](beginner/cli-basics.md)
 4. [main.rs を読む](beginner/read-main.md)
 5. [counter.rs を読む](beginner/read-counter.md)
+6. [文字数を正しく数える](beginner/count-chars.md)
