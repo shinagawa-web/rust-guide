@@ -69,9 +69,9 @@ drwxr-xr-x  src
 
 以下の順で進みます。
 
-1. [プロジェクトを動かす](beginner/cargo.md)
-2. [Rust の基本構文](beginner/basics.md)
-3. [ビットとマスクの基本](beginner/bits.md)
-4. [ファイルのメタデータを読む](beginner/read-metadata.md)
-5. [main.rs を読む](beginner/read-main.md)
-6. [バグを直す](beginner/fix.md)
+1. プロジェクトを動かす
+2. Rust の基本構文
+3. ビットとマスクの基本
+4. ファイルのメタデータを読む
+5. main.rs を読む
+6. バグを直す
