@@ -43,6 +43,7 @@
     - [Rust の基本構文](low-level/beginner/basics.md)
     - [ビットとマスクの基本](low-level/beginner/bits.md)
     - [ファイルのメタデータを読む](low-level/beginner/read-metadata.md)
+    - [main.rs を読む](low-level/beginner/read-main.md)
 - [組み込み](embedded/README.md)
 
 ---

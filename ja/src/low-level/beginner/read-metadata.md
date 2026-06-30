@@ -18,6 +18,24 @@ let metadata = match fs::metadata(path) {
 
 `fs::metadata` は必ず成功するとは限りません。指定したパスが存在しなかったり、読む権限がなかったりすると失敗します。そのため戻り値は `Result` で、`match` で成功（`Ok`）と失敗（`Err`）に分けています。成功なら中身の `Metadata` を `metadata` として受け取り、失敗ならメッセージを出して終了します。
 
+たとえば、存在しないパスを渡すと `Err` 側に入り、こう表示して終了します。
+
+```sh
+$ cargo run -- nope.txt
+```
+
+```text
+エラー: nope.txt: No such file or directory (os error 2)
+```
+
+読む権限がないパスなら、理由が変わります。
+
+```text
+エラー: secret: Permission denied (os error 13)
+```
+
+`eprintln!("エラー: {}: {}", path, e)` の `e` には、OS が返した失敗の理由が入ります（「そのようなファイルはない」「権限がない」など）。エラーは標準エラー出力に出し、`process::exit(1)` で終了コードを 1 にすることで、成功（コード 0）と区別できるようにしています。
+
 ## mode を取り出す
 
 `Metadata` には、サイズや更新日時など、ファイルについてのいろいろな情報が入っています。そのうちパーミッションは、`permissions()` で取り出せます。さらに、これまで読んできた整数そのものは `mode()` で得られます。
