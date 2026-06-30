@@ -41,7 +41,8 @@
   - [初級](low-level/beginner.md)
     - [プロジェクトを動かす](low-level/beginner/cargo.md)
     - [Rust の基本構文](low-level/beginner/basics.md)
-    - [パーミッションの数字を読む](low-level/beginner/permission.md)
+    - [ビットとマスクの基本](low-level/beginner/bits.md)
+    - [ファイルのメタデータを読む](low-level/beginner/read-metadata.md)
 - [組み込み](embedded/README.md)
 
 ---
