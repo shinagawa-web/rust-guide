@@ -36,6 +36,8 @@
     - [counter.rs を読む](cli/beginner/read-counter.md)
     - [文字数を正しく数える](cli/beginner/count-chars.md)
     - [テストを追加する](cli/beginner/add-test.md)
+  - [中級](cli/intermediate.md)
+    - [複数ファイルとオプションに対応する](cli/intermediate/multi-files-and-options.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
