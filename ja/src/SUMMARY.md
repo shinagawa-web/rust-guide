@@ -39,6 +39,7 @@
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
+    - [プロジェクトを動かす](low-level/beginner/cargo.md)
 - [組み込み](embedded/README.md)
 
 ---
