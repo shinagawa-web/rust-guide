@@ -194,7 +194,7 @@ sample/japanese.txt  lines: 2  chars: 9  bytes: 23
 
 ## 動かして確かめる
 
-初級の rwc は、ファイルを一つ受け取るだけでした。ここまでで、複数のファイルも、ディレクトリごとも受け取れるようになりました。
+ここまでで、複数のファイルも、ディレクトリごとも受け取れるようになりました。
 
 ```sh
 $ cargo run -- sample/hello.txt sample/japanese.txt
