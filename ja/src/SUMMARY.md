@@ -41,6 +41,15 @@
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
+    - [プロジェクトを動かす](low-level/beginner/cargo.md)
+    - [Rust の基本構文](low-level/beginner/basics.md)
+    - [ビットとマスクの基本](low-level/beginner/bits.md)
+    - [ファイルのメタデータを読む](low-level/beginner/read-metadata.md)
+    - [main.rs を読む](low-level/beginner/read-main.md)
+    - [perm.rs を読む](low-level/beginner/read-perm.md)
+    - [file_type を書き直す](low-level/beginner/fix-file-type.md)
+    - [テストを追加する](low-level/beginner/add-test.md)
+    - [変更をふり返る](low-level/beginner/review-change.md)
 - [組み込み](embedded/README.md)
 
 ---
