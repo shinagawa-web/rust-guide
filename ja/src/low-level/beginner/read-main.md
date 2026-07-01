@@ -76,6 +76,6 @@ let mode = metadata.permissions().mode();
 println!("{}  {}", perm::format_mode(mode), path);
 ```
 
-最後の 1 行で結果を表示します。`perm::format_mode(mode)` が、`mode` を `rwxr-xr-x` の 10 文字に直して返します。それとパス（`path`）を並べて出力しているのが、1 ページ目で最初に見た `-rwxr-xr-x  script.sh` です。
+最後の 1 行で結果を表示します。`perm::format_mode(mode)` が、`mode` を `-rwxr-xr-x` の 10 文字に直して返します。それとパス（`path`）を並べて出力しているのが、1 ページ目で最初に見た `-rwxr-xr-x  sample/script.sh` です。
 
-ここで呼んでいる `format_mode` は、`main.rs` ではなく `perm.rs` にあります。10 文字を組み立てる中心の処理で、しかも今回直すバグもこの中にあります。次のページでは、その `perm.rs` を読んでいきます。
+ここで呼んでいる `format_mode` は `perm.rs` にあります。次のページでは、その `perm.rs` を読んでいきます。

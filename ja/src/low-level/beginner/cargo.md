@@ -68,7 +68,7 @@ $ cargo run -- sample/script.sh
 初回はビルドが走るので少し時間がかかります。完了すると次のように表示されます。
 
 ```text
--rwxr-xr-x  script.sh
+-rwxr-xr-x  sample/script.sh
 ```
 
 `ls -l` の左端と同じ 10 文字が表示されれば、ツールは正しく動いています。

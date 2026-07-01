@@ -44,6 +44,10 @@
     - [ビットとマスクの基本](low-level/beginner/bits.md)
     - [ファイルのメタデータを読む](low-level/beginner/read-metadata.md)
     - [main.rs を読む](low-level/beginner/read-main.md)
+    - [perm.rs を読む](low-level/beginner/read-perm.md)
+    - [file_type を書き直す](low-level/beginner/fix-file-type.md)
+    - [テストを追加する](low-level/beginner/add-test.md)
+    - [変更をふり返る](low-level/beginner/review-change.md)
 - [組み込み](embedded/README.md)
 
 ---
