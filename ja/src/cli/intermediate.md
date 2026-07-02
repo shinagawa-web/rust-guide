@@ -109,7 +109,6 @@ $ rwc --json sample/hello.txt sample/japanese.txt
 2. [オプションで表示を選ぶ](intermediate/options.md)
 3. [ツールを配布する](intermediate/distribute.md)
 4. [エラー処理を整える](intermediate/errors.md)
-5. 自動テストを入れる
-6. 出力を整える
-
-5 以降は順次公開します。
+5. [自動テストを入れる](intermediate/tests.md)
+6. [出力を整える](intermediate/output.md)
+7. [中級をふりかえる](intermediate/wrap-up.md)
