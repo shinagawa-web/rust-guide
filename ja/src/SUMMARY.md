@@ -41,6 +41,7 @@
     - [オプションで表示を選ぶ](cli/intermediate/options.md)
     - [ツールを配布する](cli/intermediate/distribute.md)
     - [エラー処理を整える](cli/intermediate/errors.md)
+    - [自動テストを入れる](cli/intermediate/tests.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
