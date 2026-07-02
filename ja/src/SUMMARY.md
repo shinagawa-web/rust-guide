@@ -39,7 +39,7 @@
   - [中級](cli/intermediate.md)
     - [複数のファイルとディレクトリを受け取る](cli/intermediate/multi-files.md)
     - [オプションで表示を選ぶ](cli/intermediate/options.md)
-    - [作ったツールを人に渡す](cli/intermediate/distribute.md)
+    - [ツールを配布する](cli/intermediate/distribute.md)
 - [WebAssembly](wasm/README.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
