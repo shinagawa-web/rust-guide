@@ -28,7 +28,7 @@ $ echo $?
 
 `$?` は直前のコマンドの終了コードで、`0` は成功を表します。nope.txt を数えられなかったのに、rwc は「成功した」と名乗って終わっています。
 
-画面を見ているうちは、エラー行が出るので気づけます。困るのは、rwc を別のプログラムから呼んだときです。`rwc ... && 次の処理` とつなぐと、rwc が失敗しても次の処理が走ってしまいます。終了コードは、機械が成否を判断するための唯一の合図です。ここが実態と食い違うと、失敗が静かに見過ごされます。
+画面を見ているうちは、エラー行が出るので気づけます。困るのは、rwc を別のプログラムから呼んだときです。`rwc ... && 次の処理` とつなぐと、rwc が失敗しても次の処理が走ってしまいます。終了コードは、機械が成否を判断するための合図です。ここが実態と食い違うと、失敗が静かに見過ごされます。
 
 ## 終了コードに失敗を伝える
 
@@ -86,13 +86,13 @@ fn collect_targets(inputs: &[PathBuf]) -> (Vec<PathBuf>, bool) {
 }
 ```
 
-戻り値を「パスの一覧」から「一覧と、失敗があったか」の組に変えました。受け取る `main` 側も、それに合わせます。
+戻り値を「パスの一覧」から「一覧と、失敗があったか」の組に変えました。受け取る `main` 側も、それに合わせます。ここで `had_error` を受け取るので、さきほどループの前に置いた `let mut had_error = false;` は消し、宣言はこの一行にまとめます。
 
 ```rust
     let (targets, mut had_error) = collect_targets(&args.files);
 ```
 
-`collect_targets` が失敗を報告してくれば、`had_error` は最初から `true` で始まります。あとはファイルのループで読めないものに出会うたびに `true` を立て、最後にまとめて終了コードへ反映されます。
+これで `had_error` は、`collect_targets` がディレクトリの失敗を報告していれば最初から `true`、なければ `false` で始まります。あとはファイルのループで読めないものに出会うたびに `true` を立て、最後にまとめて終了コードへ反映されます。
 
 直したうえで、さっきと同じコマンドをもう一度試します。
 
@@ -122,7 +122,7 @@ let content = fs::read_to_string(path).unwrap();
 読めないファイルに当たった瞬間、こうなります。
 
 ```text
-thread 'main' panicked at src/main.rs:...:
+thread 'main' (...) panicked at src/main.rs:...:
 called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
 ```
 
