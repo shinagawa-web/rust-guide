@@ -66,7 +66,7 @@ lines: 2  chars: 9  bytes: 23
 
 ## このガイドの進め方
 
-全 10 ページ。コードを手元で動かしながら読み進めると、約 2 時間で完走できます。
+全 8 ページ。コードを手元で動かしながら読み進めると、約 2 時間で完走できます。
 
 以下の順で進みます。
 
@@ -77,3 +77,4 @@ lines: 2  chars: 9  bytes: 23
 5. [counter.rs を読む](beginner/read-counter.md)
 6. [文字数を正しく数える](beginner/count-chars.md)
 7. [テストを追加する](beginner/add-test.md)
+8. [変更をふり返る](beginner/review-change.md)

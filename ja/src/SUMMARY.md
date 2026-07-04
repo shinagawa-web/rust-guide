@@ -36,6 +36,7 @@
     - [counter.rs を読む](cli/beginner/read-counter.md)
     - [文字数を正しく数える](cli/beginner/count-chars.md)
     - [テストを追加する](cli/beginner/add-test.md)
+    - [変更をふり返る](cli/beginner/review-change.md)
   - [中級](cli/intermediate.md)
     - [複数のファイルとディレクトリを受け取る](cli/intermediate/multi-files.md)
     - [オプションで表示を選ぶ](cli/intermediate/options.md)
