@@ -42,6 +42,7 @@
   - [初級](wasm/beginner.md)
     - [WebAssembly とは / なぜ Rust](wasm/beginner/why-wasm.md)
     - [プロジェクトを動かす](wasm/beginner/run-project.md)
+    - [Rust の基本構文](wasm/beginner/basics.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
     - [プロジェクトを動かす](low-level/beginner/cargo.md)
