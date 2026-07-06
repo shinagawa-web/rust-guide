@@ -97,6 +97,8 @@
     - [スタックとヒープ](concepts/ownership/stack-heap.md)
     - [誰がいつ片付けるか](concepts/ownership/cleanup.md)
     - [move：所有権が移る](concepts/ownership/move.md)
+    - [借用：所有権を渡さずに貸し借りする](concepts/ownership/borrow.md)
+    - [所有権のまとめ](concepts/ownership/summary.md)
   - [ライフタイム](concepts/lifetime.md)
   - [エラーハンドリング](concepts/error-handling.md)
   - [トレイト](concepts/traits.md)
