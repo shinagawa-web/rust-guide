@@ -45,6 +45,7 @@
     - [Rust の基本構文](wasm/beginner/basics.md)
     - [Rust と JavaScript の境界を読む](wasm/beginner/boundary.md)
     - [lib.rs を読む](wasm/beginner/read-lib.md)
+    - [差分を正しく取る](wasm/beginner/diff-chars.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
     - [プロジェクトを動かす](low-level/beginner/cargo.md)
