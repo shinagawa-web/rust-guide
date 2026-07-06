@@ -48,6 +48,7 @@
     - [差分を正しく取る](wasm/beginner/diff-chars.md)
     - [テストを追加する](wasm/beginner/add-test.md)
     - [変更をふり返る](wasm/beginner/review-change.md)
+    - [速さを比べる（補足）](wasm/beginner/speed.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
     - [プロジェクトを動かす](low-level/beginner/cargo.md)
