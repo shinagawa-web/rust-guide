@@ -94,6 +94,8 @@
 
 - [言語の仕組み](concepts/README.md)
   - [所有権](concepts/ownership.md)
+    - [スタックとヒープ](concepts/ownership/stack-heap.md)
+    - [誰がいつ片付けるか](concepts/ownership/cleanup.md)
   - [ライフタイム](concepts/lifetime.md)
   - [エラーハンドリング](concepts/error-handling.md)
   - [トレイト](concepts/traits.md)
