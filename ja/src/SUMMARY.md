@@ -73,6 +73,9 @@
 
 - [言語別](by-language/README.md)
   - [Go から](by-language/from-go.md)
+    - [Go とほぼ同じところ](by-language/from-go/basics.md)
+    - [所有権と借用](by-language/from-go/ownership.md)
+    - [nil の代わりに Option](by-language/from-go/option.md)
   - [Python から](by-language/from-python.md)
   - [TypeScript から](by-language/from-typescript.md)
   - [C から](by-language/from-c.md)
