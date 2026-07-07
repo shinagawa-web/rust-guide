@@ -17,9 +17,12 @@ y = 25
 
 ```rust
 // Rust
+# fn main() {
 let x = 10;
 let mut y = 20;
 y = 25;
+# println!("{x} {y}");
+# }
 ```
 
 型は基本的に推論されます。明示するときは変数のうしろに書きます（`let y: i32 = 20;`）。この「デフォルト不変、変えるなら mut」という既定は、このあとの所有権の話にもつながる Rust の基本姿勢です。
@@ -32,14 +35,25 @@ y = 25;
 
 ```go
 // Go
-for i := 0; i < 5; i++ { ... }
-for i, v := range items { ... }
+for i := 0; i < 5; i++ {
+    fmt.Println(i)
+}
+for i, v := range items {
+    fmt.Println(i, v)
+}
 ```
 
 ```rust
 // Rust
-for i in 0..5 { ... }
-for (i, v) in items.iter().enumerate() { ... }
+# fn main() {
+# let items = ["a", "b", "c"];
+for i in 0..5 {
+    println!("{i}");
+}
+for (i, v) in items.iter().enumerate() {
+    println!("{i}: {v}");
+}
+# }
 ```
 
 `if` は値を返す式です。Go には三項演算子が無いので、いったん変数を宣言してから `if` 文で各分岐に代入しますが、Rust は `if` そのものを代入の右辺に置けます。
@@ -56,7 +70,11 @@ if cond {
 
 ```rust
 // Rust
+# fn main() {
+# let cond = true;
 let n = if cond { 1 } else { 2 };
+# println!("{n}");
+# }
 ```
 
 Go の `switch` にあたるのが `match` です。値ごとに分岐する使い方は Go とよく似ています。Go の `default` にあたるのが `_`（それ以外すべて）です。
@@ -75,11 +93,14 @@ default:
 
 ```rust
 // Rust
+# fn main() {
+# let n = 1;
 match n {
     1 => println!("one"),
     2 => println!("two"),
     _ => println!("other"),
 }
+# }
 ```
 
 ここでは値で分岐できる程度に覚えておけば十分で、`match` の本領（データを持つ enum の網羅）はあとの章で見ます。
@@ -99,6 +120,9 @@ func add(a, b int) int {
 
 ```rust
 // Rust
+# fn main() {
+#     println!("{}", add(2, 3));
+# }
 fn add(a: i32, b: i32) -> i32 {
     a + b // 末尾の式が戻り値。return は不要
 }
@@ -121,6 +145,11 @@ func (p Point) Add(q Point) Point {
 
 ```rust
 // Rust
+# fn main() {
+#     let p = Point { x: 1, y: 2 };
+#     let q = Point { x: 3, y: 4 };
+#     let _ = p.add(&q);
+# }
 struct Point {
     x: i32,
     y: i32,
@@ -150,6 +179,7 @@ m["b"] = 2
 
 ```rust
 // Rust
+# fn main() {
 let mut xs = vec![1, 2, 3];
 xs.push(4);
 
@@ -157,6 +187,8 @@ use std::collections::HashMap;
 let mut m = HashMap::new();
 m.insert("a", 1);
 m.insert("b", 2);
+# println!("{xs:?} {}", m.len());
+# }
 ```
 
 中身を変えるコレクションは `mut` で束ねます。一つ違うのは取り出し方です。Go のマップはキーが無ければゼロ値を返し、`v, ok := m["x"]` で有無を確かめました。Rust の `HashMap` は「無いかもしれない」を `Option` という型で返します。この Option が、Go の nil やカンマ ok の代わりになる仕組みで、これも次の章で見ます。
