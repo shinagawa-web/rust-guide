@@ -52,7 +52,7 @@ fn main() {
 
 これはコンパイルが通りません。
 
-```
+```text
 error[E0373]: closure may outlive the current function, but it borrows `count`
 ```
 
