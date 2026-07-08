@@ -58,7 +58,7 @@
     - [速さを比べる（補足）](wasm/beginner/speed.md)
   - [中級](wasm/intermediate.md)
     - [エッジで動かす](wasm/intermediate/run-at-edge.md)
-    - [動く仕組みを開ける]()
+    - [なぜエッジで動くのか](wasm/intermediate/how-it-works.md)
     - [diff をエッジから呼ぶ]()
     - [テキストを受け取って返す]()
     - [失敗をちゃんと返す]()
