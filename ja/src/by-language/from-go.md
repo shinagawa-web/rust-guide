@@ -34,5 +34,5 @@ Go と同じ感覚では書けないところ
 3. [nil の代わりに Option](from-go/option.md) — 「無いかもしれない」を型で表す
 4. [エラーの扱い](from-go/result.md) — Go の `(値, err)` から、Rust の Result と `?` へ
 5. [interface の代わりに trait](from-go/trait.md) — 共通の振る舞いを表す
-6. データを持つ enum と match — Go に無い、値の種類を型で分ける道具
+6. [データを持つ enum と match](from-go/enum.md) — Go に無い、値の種類を型で分ける道具
 7. 並行性 — goroutine / channel と似て非なるところ
