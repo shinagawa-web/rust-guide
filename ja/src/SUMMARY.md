@@ -59,7 +59,7 @@
   - [中級](wasm/intermediate.md)
     - [エッジで動かす](wasm/intermediate/run-at-edge.md)
     - [なぜエッジで動くのか](wasm/intermediate/how-it-works.md)
-    - [diff をエッジから呼ぶ]()
+    - [diff をエッジから呼ぶ](wasm/intermediate/call-diff.md)
     - [テキストを受け取って返す]()
     - [失敗をちゃんと返す]()
     - [デプロイして公開する]()

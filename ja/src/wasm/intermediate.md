@@ -42,8 +42,8 @@ $ curl -X POST https://textdiff-worker.<あなたのサブドメイン>.workers.
 次の順で、差分ツールを一段ずつエッジに載せていきます。
 
 1. [エッジで動かす](intermediate/run-at-edge.md)
-2. 動く仕組みを開ける
-3. diff をエッジから呼ぶ
+2. なぜエッジで動くのか
+3. [diff をエッジから呼ぶ](intermediate/call-diff.md)
 4. テキストを受け取って返す
 5. 失敗をちゃんと返す
 6. デプロイして公開する
