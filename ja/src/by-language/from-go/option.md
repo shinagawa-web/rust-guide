@@ -131,41 +131,8 @@ println!("{v}");
 # }
 ```
 
-## 確かめる手間を減らす — `?` と `map`
+## `?` はエラー処理で本領を出す
 
-`Option` を確かめるたびに `match` を書くと、コードが縦に伸びます。よく使う短縮形を二つ挙げます。
+`Option` にも `?` はあり、`Some` なら中身を取り出して先へ進み、`None` ならその場で `None` を返して関数を抜けます。ただしこの短縮が効いてくるのは、失敗を次々に上へ伝えていくエラー処理のほうです。Go 経験者が何度も書く `if err != nil { return err }` を畳む道具として、次の章で改めて見ます。
 
-`Option` を返す関数の中でなら、`?` が使えます。`Some` なら中身を取り出して先へ進み、`None` ならその場で `None` を返して関数を抜けます。
-
-```rust
-// Rust
-use std::collections::HashMap;
-
-fn doubled(scores: &HashMap<&str, i32>, name: &str) -> Option<i32> {
-    let v = scores.get(name)?; // 未登録なら、ここで None を返す
-    Some(v * 2)
-}
-
-fn main() {
-    let mut scores = HashMap::new();
-    scores.insert("blue", 10);
-
-    println!("{:?}", doubled(&scores, "blue")); // Some(20)
-    println!("{:?}", doubled(&scores, "red"));  // None
-}
-```
-
-中身だけを変換したいなら、`map` で `Option` の殻を保ったまま中の値に手を入れられます。
-
-```rust
-// Rust
-# use std::collections::HashMap;
-# fn main() {
-# let mut scores = HashMap::new();
-# scores.insert("blue", 10);
-let doubled = scores.get("blue").map(|v| v * 2); // Option<i32>
-println!("{doubled:?}"); // Some(20)
-# }
-```
-
-この `?` は、次の章のエラー処理でも同じ形で出てきます。「無いかもしれない」を扱う `Option` と、「失敗したかもしれない」を扱う `Result` は、Rust では同じ発想で作られた兄弟のような型です。次はその `Result` を見ます。
+「無いかもしれない」を扱う `Option` と、「失敗したかもしれない」を扱う `Result` は、Rust では同じ発想で作られた兄弟のような型です。ここまでの `match` / `if let` / `unwrap_or` は、そのまま `Result` にも通じます。次はその `Result` を見ます。
