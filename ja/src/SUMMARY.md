@@ -79,6 +79,8 @@
     - [エラーの扱い](by-language/from-go/result.md)
     - [interface の代わりに trait](by-language/from-go/trait.md)
     - [データを持つ enum と match](by-language/from-go/enum.md)
+    - [並行性](by-language/from-go/concurrency.md)
+    - [Go から Rust へ、ここまで](by-language/from-go/wrap-up.md)
   - [Python から](by-language/from-python.md)
   - [TypeScript から](by-language/from-typescript.md)
   - [C から](by-language/from-c.md)

@@ -35,4 +35,8 @@ Go と同じ感覚では書けないところ
 4. [エラーの扱い](from-go/result.md) — Go の `(値, err)` から、Rust の Result と `?` へ
 5. [interface の代わりに trait](from-go/trait.md) — 共通の振る舞いを表す
 6. [データを持つ enum と match](from-go/enum.md) — Go に無い、値の種類を型で分ける道具
-7. 並行性 — goroutine / channel と似て非なるところ
+7. [並行性](from-go/concurrency.md) — goroutine / channel と似て非なるところ
+
+最後に
+
+- [Go から Rust へ、ここまで](from-go/wrap-up.md) — 見てきた違いを振り返る
