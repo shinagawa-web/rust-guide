@@ -107,6 +107,17 @@ if let Some(v) = scores.get("blue") {
 
 `unwrap()` や `expect()` は、確認を省いて中身をそのまま取り出します。ただし `None` のときは panic します。「ここは絶対にあるはず」と言い切れる場面に限る最終手段で、Go で `nil` を確かめずに触って panic するのに近いですが、Rust では `unwrap` という名前がコードに残るので、どこで確認を飛ばしたかが読めば分かります。
 
+```rust
+// Rust
+# use std::collections::HashMap;
+# fn main() {
+# let mut scores = HashMap::new();
+# scores.insert("blue", 10);
+let v = scores.get("blue").unwrap(); // "blue" はあるので 10。未登録の名前だと panic
+println!("{v}");
+# }
+```
+
 無いときに panic させず、既定値で進めたいなら `unwrap_or` を使います。`unwrap` の、`None` のときに既定値を返す版です。Go でゼロ値をそのまま既定値に使っていたのを、明示的に書く形です。
 
 ```rust
