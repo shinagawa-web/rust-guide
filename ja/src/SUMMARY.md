@@ -77,6 +77,7 @@
     - [所有権と借用](by-language/from-go/ownership.md)
     - [nil の代わりに Option](by-language/from-go/option.md)
     - [エラーの扱い](by-language/from-go/result.md)
+    - [interface の代わりに trait](by-language/from-go/trait.md)
   - [Python から](by-language/from-python.md)
   - [TypeScript から](by-language/from-typescript.md)
   - [C から](by-language/from-c.md)
