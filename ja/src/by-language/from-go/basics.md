@@ -31,6 +31,27 @@ y = 25;
 
 `if` と `for` は Go とほぼ同じ感覚で書けます。条件を丸括弧で囲まない点、本体の波括弧を省略できない点も Go と同じです。
 
+```go
+// Go
+if n > 0 {
+    fmt.Println("positive")
+} else {
+    fmt.Println("zero or negative")
+}
+```
+
+```rust
+// Rust
+# fn main() {
+# let n = 1;
+if n > 0 {
+    println!("positive");
+} else {
+    println!("zero or negative");
+}
+# }
+```
+
 `for` は範囲やイテレータを回す形が基本です。C 風の三項ループはありません。
 
 ```go
