@@ -10,7 +10,7 @@
 
 中級では、専用のスターターリポジトリを出発点にします。初級で手を入れた、文字ごとに差分を取る Rust のコードだけを取り出し、それをエッジで動かすための最小のプログラムに収めたものです。初級で手を入れたコードとは別なので、混ざる心配はありません。
 
-この先は Rust と cargo が入っている前提で進めます。まだ整えていない場合は、初級の [プロジェクトを動かす](beginner/run-project.md) で環境を用意してください。エッジで動かすための準備は、次の1章で整えます。
+この先は Rust と cargo が入っている前提で進めます。まだ整えていない場合は、初級の [プロジェクトを動かす](beginner/run-project.md) で環境を用意してください。エッジで動かすための準備は、次のページで整えます。
 
 ```sh
 $ git clone https://github.com/shinagawa-web/rust-guide-sample-intermediate-wasm.git
@@ -41,8 +41,8 @@ $ curl -X POST https://textdiff-worker.<あなたのサブドメイン>.workers.
 
 次の順で、差分ツールを一段ずつエッジに載せていきます。
 
-1. [エッジで動かす](intermediate/run-at-edge.md)
-2. なぜエッジで動くのか
+1. [まず手元で動かす](intermediate/run-at-edge.md)
+2. [手元で動いた仕組み](intermediate/how-it-works.md)
 3. [diff をエッジから呼ぶ](intermediate/call-diff.md)
 4. テキストを受け取って返す
 5. 失敗をちゃんと返す
