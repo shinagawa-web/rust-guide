@@ -60,7 +60,7 @@
     - [まず手元で動かす](wasm/intermediate/run-at-edge.md)
     - [手元で動いた仕組み](wasm/intermediate/how-it-works.md)
     - [diff をエッジから呼ぶ](wasm/intermediate/call-diff.md)
-    - [テキストを受け取って返す]()
+    - [テキストを受け取って返す](wasm/intermediate/receive-text.md)
     - [失敗をちゃんと返す]()
     - [デプロイして公開する]()
     - [中級をふりかえる]()
