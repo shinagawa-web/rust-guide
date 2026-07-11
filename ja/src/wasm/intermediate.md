@@ -44,7 +44,7 @@ $ curl -X POST https://textdiff-worker.<あなたのサブドメイン>.workers.
 1. [まず手元で動かす](intermediate/run-at-edge.md)
 2. [手元で動いた仕組み](intermediate/how-it-works.md)
 3. [diff をエッジから呼ぶ](intermediate/call-diff.md)
-4. テキストを受け取って返す
-5. 失敗をちゃんと返す
-6. デプロイして公開する
+4. [テキストを受け取って返す](intermediate/receive-text.md)
+5. [失敗をちゃんと返す](intermediate/handle-errors.md)
+6. [デプロイして公開する](intermediate/deploy.md)
 7. 中級をふりかえる
