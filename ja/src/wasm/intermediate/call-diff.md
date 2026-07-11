@@ -52,7 +52,7 @@ async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 $ wrangler dev
 ```
 
-書き換えたコードを worker-build が wasm に変換し直してから立ち上がるので、少し待ちます。起動したら、別のターミナルから同じ URL を叩きます。
+書き換えたコードを worker-build が wasm に変換し直してから立ち上がるので、少し待ちます。起動したら、別のターミナルから同じ URL を呼び出します。
 
 ```sh
 $ curl http://localhost:8787

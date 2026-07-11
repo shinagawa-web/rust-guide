@@ -40,7 +40,7 @@ Deployed textdiff-worker triggers (1.49 sec)
 
 この先で自分の URL を使うので、最後に出た `workers.dev` の URL を控えておいてください。
 
-## 公開された URL を叩く
+## 公開された URL を呼ぶ
 
 さっそく、公開された URL を呼んでみます。これまで `http://localhost:8787` に送っていた curl の宛先を、いま控えた自分の URL に変えるだけです。
 

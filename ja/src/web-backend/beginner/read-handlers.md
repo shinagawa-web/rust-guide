@@ -47,7 +47,7 @@ pub async fn get_users(State(db): State<Vec<User>>) -> Json<Vec<User>> {
 
 引数の `State(db)` は `main.rs` で `.with_state(db)` に渡したユーザーデータです。それをそのまま `Json(db)` で包んで返しています。`Json(...)` で包むと axum が JSON 形式に変換してレスポンスとして返します。
 
-`curl http://localhost:3000/users` を叩いたときに Alice と Bob のリストが返ってきたのは、この 1 行のおかげです。
+`curl http://localhost:3000/users` を実行したときに Alice と Bob のリストが返ってきたのは、この 1 行のおかげです。
 
 ## get_user を読む
 
@@ -129,4 +129,4 @@ fn main() {
 
 ID が一致するユーザーが見つかれば `Ok(Json(user.clone()))` を返します。`db` を最後まで調べても見つからなければ `Err(StatusCode::NOT_FOUND)` を返します。`StatusCode::NOT_FOUND` は HTTP の 404 です。
 
-`curl http://localhost:3000/users/99` を叩いたときに `404` が返ってきたのはこの `Err` のおかげです。
+`curl http://localhost:3000/users/99` を実行したときに `404` が返ってきたのはこの `Err` のおかげです。

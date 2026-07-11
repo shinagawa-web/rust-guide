@@ -101,7 +101,7 @@ async fn main() {
 
 `Router` は「この URL へのアクセスはこの関数で処理する」という対応を管理するものです。`.route()` で URL と関数を 1 対 1 で登録しています。`http://localhost:3000/users` にリクエストが来ると `get_users` が呼ばれ、`http://localhost:3000/users/1` にリクエストが来ると `get_user` が呼ばれます。
 
-`.with_state(db)` は `db` を各関数に渡しています。`cargo run` で起動してから `curl http://localhost:3000/users` を叩いたときに Alice と Bob のデータが返ってきたのは、`db` がここから各関数に届いているためです。
+`.with_state(db)` は `db` を各関数に渡しています。`cargo run` で起動してから `curl http://localhost:3000/users` を実行したときに Alice と Bob のデータが返ってきたのは、`db` がここから各関数に届いているためです。
 
 最後にサーバーを起動します。
 
