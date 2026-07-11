@@ -176,4 +176,4 @@ fn main() {
 
 `dyn Summary` は「どの型かは実行時に決まる、`Summary` を満たすもの」です。呼ばれる `summary` が実行時に選ばれるのは、TypeScript で `Summary` 型の変数に対してメソッドを呼ぶと、中身が `Article` か `Tweet` かに応じた実装が動くのと同じです。TypeScript はそれを黙って行い、Rust は `Box<dyn Summary>` と書いて明示します。
 
-TypeScript の構造的な interface は、Rust では trait になります。違うのは、満たすことを `impl` で明示する点だけでした。次は union 型にあたる仕組みです。値の種類そのものを型で分ける enum と、それを取り出す match を見ます。
+TypeScript の構造的な interface は、Rust では trait になります。違うのは、満たすことを `impl` で明示する点だけでした。次は、TypeScript の union 型にあたるものです。値の種類そのものを型で分ける Rust の enum と、それを取り出す match を見ます。
