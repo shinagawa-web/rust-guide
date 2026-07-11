@@ -86,6 +86,9 @@ $ wrangler dev
 
 ```sh
 $ curl http://localhost:8787
+```
+
+```text
 textdiff worker is running
 ```
 
