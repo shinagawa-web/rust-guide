@@ -61,7 +61,7 @@
     - [手元で動いた仕組み](wasm/intermediate/how-it-works.md)
     - [diff をエッジから呼ぶ](wasm/intermediate/call-diff.md)
     - [テキストを受け取って返す](wasm/intermediate/receive-text.md)
-    - [失敗をちゃんと返す](wasm/intermediate/handle-errors.md)
+    - [失敗に理由をつけて返す](wasm/intermediate/handle-errors.md)
     - [デプロイして公開する](wasm/intermediate/deploy.md)
     - [中級をふりかえる]()
 - [低レイヤ・システム](low-level/README.md)
