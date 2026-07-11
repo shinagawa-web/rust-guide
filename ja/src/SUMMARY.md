@@ -63,7 +63,7 @@
     - [テキストを受け取って返す](wasm/intermediate/receive-text.md)
     - [失敗に理由をつけて返す](wasm/intermediate/handle-errors.md)
     - [デプロイして公開する](wasm/intermediate/deploy.md)
-    - [中級をふりかえる]()
+    - [中級をふりかえる](wasm/intermediate/wrap-up.md)
 - [低レイヤ・システム](low-level/README.md)
   - [初級](low-level/beginner.md)
     - [プロジェクトを動かす](low-level/beginner/cargo.md)
