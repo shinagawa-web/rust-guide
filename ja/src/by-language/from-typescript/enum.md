@@ -79,7 +79,7 @@ enum Shape {
 
 `Shape` に `Triangle` を足しただけで、さきほどの `area` はコンパイルが通らなくなります。match が `Circle` と `Rect` しか扱っておらず、`Triangle` が抜けているからです。
 
-```
+```text
 error[E0004]: non-exhaustive patterns: `&Shape::Triangle { .. }` not covered
 ```
 
