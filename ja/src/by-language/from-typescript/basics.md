@@ -102,7 +102,7 @@ for (i, v) in items.iter().enumerate() {
 # }
 ```
 
-`if` は値を返す式です。TypeScript で分岐して値を選ぶときは三項演算子 `cond ? 1 : 2` を使うか、いったん `let` で宣言してから各分岐で代入しますが、Rust は `if` そのものを代入の右辺に置けます。
+TypeScript で分岐して値を選ぶときは、三項演算子 `cond ? 1 : 2` を使うか、いったん `let` で宣言してから各分岐で代入します。Rust では `if` そのものが値を返す式なので、`if` を代入の右辺に直接置けます。
 
 ```ts
 // TypeScript
@@ -118,7 +118,7 @@ let n = if cond { 1 } else { 2 };
 # }
 ```
 
-TypeScript の `switch` にあたるのが `match` です。値ごとに分岐する使い方はよく似ています。TypeScript の `default` にあたるのが `_`（それ以外すべて）で、`break` を書き忘れて次の case に落ちる心配もありません。
+TypeScript の `switch` にあたるのが `match` です。値ごとに分岐する使い方はよく似ています。TypeScript の `default` にあたるのが `_`（それ以外すべて）です。また、`break` を書き忘れて次の case に落ちる心配もありません。
 
 ```ts
 // TypeScript
@@ -218,10 +218,12 @@ TypeScript の配列にあたるのが `Vec`、`Map` にあたるのが `HashMap
 // TypeScript
 const xs = [1, 2, 3];
 xs.push(4);
+console.log(xs); // [ 1, 2, 3, 4 ]
 
 const m = new Map<string, number>();
 m.set("a", 1);
 m.set("b", 2);
+console.log(m.get("a")); // 1
 ```
 
 ```rust
@@ -229,12 +231,13 @@ m.set("b", 2);
 # fn main() {
 let mut xs = vec![1, 2, 3];
 xs.push(4);
+println!("{xs:?}"); // [1, 2, 3, 4]
 
 use std::collections::HashMap;
 let mut m = HashMap::new();
 m.insert("a", 1);
 m.insert("b", 2);
-# println!("{xs:?} {}", m.len());
+println!("{:?}", m.get("a")); // Some(1)
 # }
 ```
 
