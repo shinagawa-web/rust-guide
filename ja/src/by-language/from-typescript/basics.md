@@ -241,6 +241,8 @@ println!("{:?}", m.get("a")); // Some(1)
 # }
 ```
 
+出力の `{xs:?}` に付いた `:?` は、`Vec` や `HashMap` のような中身のある値を、そのまま見やすく出すための指定です。`{xs}` だけだと `Vec` は表示できず、`{xs:?}` とすると `[1, 2, 3, 4]` のように出せます。
+
 ここで一つ引っかかるのが `mut` です。TypeScript では `const xs = [1, 2, 3]` としても `xs.push(4)` は通ります。`const` は変数の代入し直しを止めるだけで、中身の書き換えは止めないからです。Rust の `let` は中身の書き換えも止めるので、`push` するには `let mut` で束ねる必要があります。
 
 もう一つ違うのが取り出し方です。TypeScript の `Map` はキーが無ければ `undefined` を返し、`map.get("x")` の結果は `number | undefined` になりました。Rust の `HashMap` は「無いかもしれない」を `Option` という型で返します。この `Option` が、TypeScript の `undefined` の代わりになる仕組みで、これも次の章のあとで見ます。

@@ -136,7 +136,7 @@ println!("{v}");
 
 `get` は値そのものではなく参照 `Option<&i32>` を返すので、間に挟んだ `copied()` で中の数値を取り出してから、既定値の `0` とそろえています。
 
-値があるときだけ変換して、無ければ無いままにしたいなら `map` を使います。TypeScript の `?.`（optional chaining）に近く、`Some` なら中身に処理を適用して `Some` のまま返し、`None` なら何もせず `None` を返します。
+値があるときだけ変換して、無ければ無いままにしたいなら `map` を使います。TypeScript の `?.`（optional chaining）に近く、`Some` なら中身に処理を適用して `Some` のまま返し、`None` なら何もせず `None` を返します。渡している `|v| v.to_string()` は、TypeScript のアロー関数 `v => v.toString()` にあたる書き方です。
 
 ```ts
 // TypeScript
