@@ -100,6 +100,7 @@
     - [並行性](by-language/from-typescript/concurrency.md)
     - [TypeScript から Rust へ、ここまで](by-language/from-typescript/wrap-up.md)
   - [C から](by-language/from-c.md)
+    - [ほぼ読めるが、既定が違う](by-language/from-c/basics.md)
   - [C++ から](by-language/from-cpp.md)
   - [Java から](by-language/from-java.md)
 
