@@ -99,8 +99,9 @@
     - [union 型の代わりに enum と match](by-language/from-typescript/enum.md)
     - [並行性](by-language/from-typescript/concurrency.md)
     - [TypeScript から Rust へ、ここまで](by-language/from-typescript/wrap-up.md)
-  - [C から](by-language/from-c.md)
+  - [C言語 から](by-language/from-c.md)
     - [ほぼ読めるが、既定が違う](by-language/from-c/basics.md)
+    - [ポインタと所有権](by-language/from-c/ownership.md)
   - [C++ から](by-language/from-cpp.md)
   - [Java から](by-language/from-java.md)
 
