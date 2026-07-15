@@ -105,3 +105,27 @@ $ cargo embed
 ```
 
 `Erasing`（ボードの古い中身を消す）と `Programming`（新しいプログラムを書き込む）が 100% になり、`Finished` が出れば成功です。プロンプトに戻った時点で、ページ冒頭の映像のように、ボードのハートが1秒ごとに点滅を始めています。自分の書いた Rust が、目の前のハードウェアを動かした瞬間です。
+
+## うまくいかないとき（OS 別）
+
+`probe-rs list` にボードが出ない、あるいは `cargo embed` が書き込みまで進まないときは、多くが OS ごとのプローブへのアクセスの問題です。まず、前の節のとおり USB の差し込みとケーブル（データの通るもの）を確かめてください。それでも解決しないときは、OS ごとに次を見ます。
+
+### Linux
+
+Linux では、ふつうのユーザーのままだとプローブにアクセスできず、つないでも `probe-rs list` に出ないことがあります。probe-rs が配っている udev ルールを入れると、root でなくてもアクセスできるようになります。
+
+```sh
+$ sudo curl -fsSL https://probe.rs/files/69-probe-rs.rules -o /etc/udev/rules.d/69-probe-rs.rules
+$ sudo udevadm control --reload
+$ sudo udevadm trigger
+```
+
+入れたら、ボードを挿し直します。
+
+### macOS
+
+ドライバは要りません。認識されないときは、前の節のとおり USB の差し込みが浅いか、ケーブルがデータの通らないものであることがほとんどです。
+
+### Windows
+
+ドライバは要りません。micro:bit のデバッガ（CMSIS-DAP）はそのまま使えます。認識されないときは、USB の差し込みとケーブルを確かめてください。
