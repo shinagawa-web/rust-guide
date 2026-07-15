@@ -34,15 +34,17 @@ C と同じ感覚では書けないところ
 
 2. [ポインタと所有権](from-c/ownership.md) — `malloc` / `free` を手でやる代わりに、コンパイル時に解放を決める
 3. [借用とスライス](from-c/borrowing.md) — ポインタの共有を借用の規則に、配列の境界をスライスの境界チェックに
-4. [NULL の代わりに Option](from-c/option.md) — ヌルポインタを型で締め出す
-5. [文字列](from-c/strings.md) — `char*` と NUL 終端から、`&str` / `String` / UTF-8 へ
-6. [エラー処理](from-c/error-handling.md) — エラーコードや `errno` から、`Result` と `?`、後始末は `Drop` へ
-7. [union の代わりに enum と match](from-c/enums.md) — タグ手管理の共用体を、タグ付き enum に
-8. [void\* の代わりに trait](from-c/trait.md) — 手作りの汎用を、trait とジェネリクスに
-9. [未定義動作と unsafe・FFI](from-c/unsafe-ffi.md) — C の未定義動作を定義された挙動に、逃げ道と C との相互運用
-10. [並行性](from-c/concurrency.md) — `pthread` と似て非なるところ、データ競合をコンパイル時に防ぐ
-11. [Cargo とビルド](from-c/cargo.md) — `make` / ヘッダ / 手動リンクから Cargo へ
+4. NULL の代わりに Option — ヌルポインタを型で締め出す
+5. 文字列 — `char*` と NUL 終端から、`&str` / `String` / UTF-8 へ
+6. エラー処理 — エラーコードや `errno` から、`Result` と `?`、後始末は `Drop` へ
+7. union の代わりに enum と match — タグ手管理の共用体を、タグ付き enum に
+8. void\* の代わりに trait — 手作りの汎用を、trait とジェネリクスに
+9. 未定義動作と unsafe・FFI — C の未定義動作を定義された挙動に、逃げ道と C との相互運用
+10. 並行性 — `pthread` と似て非なるところ、データ競合をコンパイル時に防ぐ
+11. Cargo とビルド — `make` / ヘッダ / 手動リンクから Cargo へ
 
 最後に
 
-- [C言語 から Rust へ、ここまで](from-c/wrap-up.md) — 見てきた違いを振り返り、次に読む場所へ
+- C言語 から Rust へ、ここまで — 見てきた違いを振り返り、次に読む場所へ
+
+（4章より先はこれから執筆します。）
