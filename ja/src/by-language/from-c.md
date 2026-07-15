@@ -34,7 +34,7 @@ C と同じ感覚では書けないところ
 
 2. [ポインタと所有権](from-c/ownership.md) — `malloc` / `free` を手でやる代わりに、コンパイル時に解放を決める
 3. [借用とスライス](from-c/borrowing.md) — ポインタの共有を借用の規則に、配列の境界をスライスの境界チェックに
-4. NULL の代わりに Option — ヌルポインタを型で締め出す
+4. [NULL の代わりに Option](from-c/option.md) — ヌルポインタを型で締め出す
 5. 文字列 — `char*` と NUL 終端から、`&str` / `String` / UTF-8 へ
 6. エラー処理 — エラーコードや `errno` から、`Result` と `?`、後始末は `Drop` へ
 7. union の代わりに enum と match — タグ手管理の共用体を、タグ付き enum に
