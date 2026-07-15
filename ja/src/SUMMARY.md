@@ -102,6 +102,7 @@
   - [C言語 から](by-language/from-c.md)
     - [ほぼ読めるが、既定が違う](by-language/from-c/basics.md)
     - [ポインタと所有権](by-language/from-c/ownership.md)
+    - [借用とスライス](by-language/from-c/borrowing.md)
   - [C++ から](by-language/from-cpp.md)
   - [Java から](by-language/from-java.md)
 
