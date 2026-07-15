@@ -79,6 +79,7 @@
   - [初級](embedded/beginner.md)
     - [なぜ Rust で組み込みか](embedded/beginner/why-embedded.md)
     - [ボードを光らせるまで](embedded/beginner/blink.md)
+    - [光らせたコードを読む](embedded/beginner/read-blink.md)
 
 ---
 
