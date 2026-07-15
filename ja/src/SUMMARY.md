@@ -76,6 +76,9 @@
     - [テストを追加する](low-level/beginner/add-test.md)
     - [変更をふり返る](low-level/beginner/review-change.md)
 - [組み込み](embedded/README.md)
+  - [初級](embedded/beginner.md)
+    - [なぜ Rust で組み込みか](embedded/beginner/why-embedded.md)
+    - [ボードを光らせるまで](embedded/beginner/blink.md)
 
 ---
 
