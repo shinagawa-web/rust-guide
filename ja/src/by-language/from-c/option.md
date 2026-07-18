@@ -1,6 +1,6 @@
 # NULL の代わりに Option
 
-C言語 で「値が無いかもしれない」を表すときは、ポインタの `NULL` を使ってきました。関数が探し物を見つけられなかったら `NULL` を返す、確保に失敗したら `NULL` を返す。呼ぶ側は、返ってきたポインタが `NULL` かどうかを自分で確かめてから使います。この章では、その `NULL` を Rust がどう置き換えるかを見ます。
+C言語 で「値が無いかもしれない」を表すときは、ポインタの `NULL` を使ってきました。関数が探し物を見つけられなかったら `NULL` を返す、確保に失敗したら `NULL` を返す。呼ぶ側は、返ってきたポインタが `NULL` かどうかを自分で確かめてから使います。この章では、Rust がどう扱うかを見ます。
 
 ## C のヌルポインタ — 型が同じで、確認はプログラマ任せ
 
@@ -44,8 +44,8 @@ Rust の参照 `&T` には、`NULL` にあたるものがありません。`&T` 
 
 `Option<T>` は、次の二つのどちらかを持つ型です。
 
-- `Some(T)` — 値がある。中に `T` が入っている
-- `None` — 値がない
+- `Some(T)`: 値がある。中に `T` が入っている
+- `None`: 値がない
 
 さきほどの `find` を Rust で書くと、戻り値の型が `Option<&i32>` になります。見つかれば `Some(参照)`、見つからなければ `None` です。
 
@@ -135,8 +135,11 @@ fn main() {
 # }
 fn main() {
     let xs = [10, 20, 30];
-    let doubled = find(&xs, 20).map(|x| x * 2); // Some(20) → Some(40)、None → None
-    println!("{doubled:?}");                    // Some(40)
+    let doubled = find(&xs, 20).map(|x| x * 2); // Some(20) → Some(40)
+    println!("{doubled:?}");                     // Some(40)
+
+    let not_found = find(&xs, 99).map(|x| x * 2); // None → None
+    println!("{not_found:?}");                     // None
 }
 ```
 
@@ -144,12 +147,19 @@ fn main() {
 
 ```rust
 // Rust
+# fn find(xs: &[i32], target: i32) -> Option<&i32> {
+#     for x in xs { if *x == target { return Some(x); } }
+#     None
+# }
 fn main() {
-    let x: Option<i32> = Some(5);
-    println!("{}", x.unwrap()); // 5
+    let xs = [10, 20, 30];
 
-    let y: Option<i32> = None;
-    println!("{}", y.unwrap()); // panic：None を unwrap した
+    // 20 は確実に入っているので unwrap してよい
+    let found = find(&xs, 20).unwrap();
+    println!("{found}"); // 20
+
+    // 99 は入っていないので panic する
+    find(&xs, 99).unwrap();
 }
 ```
 
