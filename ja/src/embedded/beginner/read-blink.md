@@ -2,7 +2,7 @@
 
 前のページで書き込んだプロジェクトは、4つのファイルで動いています。
 
-```
+```text
 rust-guide-sample-beginner-embedded/
 ├── Cargo.toml          # 使うクレート（ライブラリ）の一覧
 ├── Embed.toml          # cargo embed の設定
