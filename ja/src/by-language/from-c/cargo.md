@@ -37,7 +37,7 @@ main: main.o
 
 Rust のプロジェクトは `cargo new` で作ります。
 
-```
+```sh
 $ cargo new hello
 $ cd hello
 ```
@@ -56,7 +56,7 @@ serde = "1"
 
 `cargo build` を実行すると、`crates.io` から `serde` を自動的にダウンロードしてビルドします。バージョンは `Cargo.lock` に記録され、チームで同じバージョンを使えます。
 
-```
+```sh
 $ cargo build    # ビルド
 $ cargo run      # ビルドして実行
 $ cargo test     # テストを実行
