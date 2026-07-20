@@ -1,75 +1,76 @@
 # トレイト
 
-「面積を求める」「中身を表示する」。型は違っても、やりたいことは同じ、ということがよくあります。円でも長方形でも面積は出したい。ところが型ごとに別々の関数を書いていくと、名前も呼び出しもばらばらで、同じ「面積を求める」がコードの上でつながりません。
+「ログを書き込む」処理があります。開発中はコンソールに出したい。本番ではファイルに残したい。どこに出すかは違っても、呼び出し側がしたいのは「ログを書き込む」こと一つです。ところが出力先ごとに別々の関数を書いていくと、名前も呼び出しもばらばらで、同じ「ログを書き込む」がコードの上でつながりません。
 
-トレイトは、こういう「型は違うけれど共通してできること」に名前を付ける仕組みです。名前を付けておくと、関数の側は「その名前を持つ型なら何でも」受け取れるようになります。このページでは、名前の付け方（トレイトの定義）と持たせ方（実装）から始めて、その名前を要求する関数、標準ライブラリのトレイトの使い方、違う型をまとめて扱う書き方まで見ていきます。
+トレイトは、こういう「型は違うけれど共通してできること」に名前を付ける仕組みです。名前を付けておくと、関数の側は「その名前を持つ型なら何でも」受け取れるようになります。このページでは、トレイトの定義と実装から始めて、その名前を要求する関数、標準ライブラリのトレイトの使い方、違う型をまとめて扱う書き方まで見ていきます。
 
 ## 同じふるまいを型ごとに書く
 
-まず、トレイトのない状態で困るところを見ます。円と長方形、それぞれの面積を返す関数です。
+まず、トレイトのない状態で困るところを見ます。コンソールとファイル、それぞれへ書き込む関数です。
 
 ```rust
-struct Circle { radius: f64 }
-struct Rectangle { width: f64, height: f64 }
+struct ConsoleLogger;
+struct FileLogger { path: String }
 
-fn circle_area(c: &Circle) -> f64 {
-    c.radius * c.radius * 3.14
+fn console_log(_logger: &ConsoleLogger, message: &str) {
+    println!("{message}");
 }
 
-fn rect_area(r: &Rectangle) -> f64 {
-    r.width * r.height
+fn file_log(logger: &FileLogger, message: &str) {
+    println!("({} に書き込み) {message}", logger.path);
 }
 ```
 
-どちらも「面積を返す」処理なのに、関数名は別々です。このくらいなら困りませんが、「どんな図形でも、面積を求めて表示する」ような処理を書こうとすると行き詰まります。相手が円か長方形かで呼ぶ関数が変わるので、型ごとに分岐を書くか、型の数だけ処理を用意することになる。図形が増えるほど、手に負えなくなります。
+どちらも「ログを書き込む」処理なのに、関数名は別々です。このくらいなら困りませんが、「どんな出力先にも、同じ内容を書き込む」ような処理を書こうとすると行き詰まります。相手がコンソールかファイルかで呼ぶ関数が変わるので、型ごとに分岐を書くか、型の数だけ処理を用意することになる。出力先が増えるほど、手に負えなくなります。
 
 ## 共通のふるまいに名前を付ける
 
-そこで、「面積を返せる」という共通のふるまいに名前を付けます。これがトレイトです。
+そこで、「ログを書き込める」という共通のふるまいに名前を付けます。これがトレイトです。
 
 ```rust
-trait Area {
-    fn area(&self) -> f64;
+trait Logger {
+    fn log(&self, message: &str);
 }
 ```
 
-`trait Area` は、「`area` という関数を持つ」という約束に名前を付けただけのものです。中身はまだ書きません。次に、その約束を各型に果たさせます。
+`trait Logger` は、「`log` という関数を持つ」という約束に名前を付けただけのものです。中身はまだ書きません。次に、その約束を各型に果たさせます。
 
 ```rust
-impl Area for Circle {
-    fn area(&self) -> f64 {
-        self.radius * self.radius * 3.14
+impl Logger for ConsoleLogger {
+    fn log(&self, message: &str) {
+        println!("{message}");
     }
 }
 
-impl Area for Rectangle {
-    fn area(&self) -> f64 {
-        self.width * self.height
+impl Logger for FileLogger {
+    fn log(&self, message: &str) {
+        println!("({} に書き込み) {message}", self.path);
     }
 }
 ```
 
-`impl Area for Circle` は、「Circle は Area の約束を果たす」という宣言です。これで Circle も Rectangle も「Area を持つ型」になりました。呼び方も `.area()` に揃います。型ごとにばらばらだった関数名が、`area` 一つにまとまったわけです。
+`impl Logger for ConsoleLogger` は、「ConsoleLogger は Logger の約束を果たす」という宣言です。これで ConsoleLogger も FileLogger も「Logger を持つ型」になりました。呼び方も `.log()` に揃います。型ごとにばらばらだった関数名が、`log` 一つにまとまったわけです。
 
 ## そのトレイトを持つ型なら受け取れる
 
-名前を付けたことで、関数の側が変わります。「Area を持つ型なら何でも」受け取る関数を、一つだけ書けます。
+名前を付けたことで、関数の側が変わります。「Logger を持つ型なら何でも」受け取る関数を、一つだけ書けます。
 
 ```rust
-fn print_area(shape: &impl Area) {
-    println!("面積は {}", shape.area());
+fn process(logger: &impl Logger) {
+    logger.log("処理を開始します");
+    logger.log("処理が完了しました");
 }
 
 fn main() {
-    let c = Circle { radius: 2.0 };
-    let r = Rectangle { width: 3.0, height: 4.0 };
+    let console = ConsoleLogger;
+    let file = FileLogger { path: "app.log".to_string() };
 
-    print_area(&c);   // 円でも
-    print_area(&r);   // 長方形でも
+    process(&console);   // コンソールでも
+    process(&file);      // ファイルでも
 }
 ```
 
-`&impl Area` は、「Area を持つ型への参照なら何でも」という意味です。`print_area` は、相手が円か長方形かを知りません。知っているのは「Area を持っている＝ `area()` を呼べる」ことだけ。だから一つの関数で両方を扱えます。型ごとに関数を分けずに済むのは、この「中身の型ではなく、できることだけを要求する」書き方のおかげです。
+`&impl Logger` は、「Logger を持つ型への参照なら何でも」という意味です。`process` は、相手がコンソールかファイルかを知りません。知っているのは「Logger を持っている＝ `log()` を呼べる」ことだけ。だから一つの関数で両方を扱えます。型ごとに関数を分けずに済むのは、この「中身の型ではなく、できることだけを要求する」書き方のおかげです。
 
 この「トレイトを持つ型なら何でも」を、もう一歩踏み込んで書く方法が次のジェネリクスです。ここでは入口まで見ておけば十分です。
 
@@ -78,25 +79,26 @@ fn main() {
 トレイトには、関数の約束だけでなく、既定の中身も持たせられます。デフォルト実装です。
 
 ```rust
-trait Area {
-    fn area(&self) -> f64;
+trait Logger {
+    fn log(&self, message: &str);
 
-    fn describe(&self) -> String {
-        format!("面積は {}", self.area())
+    fn warn(&self, message: &str) {
+        self.log(&format!("[WARN] {message}"));
     }
 }
 ```
 
-`describe` には中身が書いてあります。だから各型の `impl` で書かなくても、`Area` を持つ型なら最初から `describe` を使えます。円は `area` しか実装していませんが、`describe` はそのまま呼べます。
+`warn` には中身が書いてあります。「`[WARN]` を前に付けて `log` を呼ぶ」という処理は、どの出力先でも同じだからです。だから各型の `impl` で書かなくても、`Logger` を持つ型なら最初から `warn` を使えます。
 
 ```rust
 fn main() {
-    let c = Circle { radius: 2.0 };
-    println!("{}", c.describe());   // 面積は 12.56
+    let console = ConsoleLogger;
+    console.warn("ディスクが残り少なくなっています");
+    // → [WARN] ディスクが残り少なくなっています
 }
 ```
 
-型ごとに違う部分（`area`）だけを各 `impl` で書き、どの型でも同じでいい部分（`describe`）はトレイトに一度書けばいい。ある型だけ振る舞いを変えたければ、その型の `impl` で `describe` を書き直せば上書きできます。
+型ごとに違う部分（`log`）だけを各 `impl` で書き、どの型でも同じでいい部分（`warn`）はトレイトに一度書けばいい。ある型だけ振る舞いを変えたければ、その型の `impl` で `warn` を書き直せば上書きできます。
 
 ## すでにあるトレイトを使う
 
@@ -111,7 +113,7 @@ fn main() {
 }
 ```
 
-`Point` は `Debug` を持っていないので、これは止まります。とはいえ、`Debug` の中身は「フィールドを順に並べて表示する」という機械的なもので、自分で書くのは退屈です。そこで、コンパイラに自動で実装させます。
+`Point` は `Debug` を持っていないので、これは止まります。とはいえ、`Debug` の中身は「構造体名とフィールド名・値を並べて表示する」という機械的なもので、自分で書くのは退屈です。そこで、コンパイラに自動で実装させます。
 
 ```rust
 #[derive(Debug)]
@@ -123,28 +125,28 @@ fn main() {
 }
 ```
 
-`#[derive(Debug)]` と付けるだけで、`Debug` の実装がコンパイラによって導き出されます（derive は「導出する」の意）。標準ライブラリには、`Debug` のほかにも、等値比較の `PartialEq`、複製の `Clone` など、`derive` で済むトレイトがそろっています。
+`#[derive(Debug)]` と付けるだけで、コンパイラが `Debug` の実装を導き出します（derive は「導出する」の意）。標準ライブラリには、`Debug` のほかにも、等値比較の `PartialEq`、複製の `Clone` など、`derive` で済むトレイトがそろっています。
 
-なお、`{:?}` の `Debug` は開発者が中身を確認するための表示です。利用者に見せる整った表示は `Display`（`{}` で使う）という別のトレイトが担い、こちらは `derive` できないので中身を自分で書きます。
+なお、`{:?}` の `Debug` は開発者が中身を確認するための表示です。利用者に見せる整った表示は `Display`（`{}` で使う）という別のトレイトが担います。`Display` は `derive` できないので、中身を自分で書きます。
 
 ## 違う型を一つにまとめる
 
-最後に、型の違うものをまとめて扱いたい場面を見ます。円と長方形を同じ一覧に入れて、順に面積を出す、というものです。
+最後に、型の違うものをまとめて扱いたい場面を見ます。複数の出力先に同じログを流す、というものです。
 
 ```rust
 fn main() {
-    let shapes: Vec<Box<dyn Area>> = vec![
-        Box::new(Circle { radius: 2.0 }),
-        Box::new(Rectangle { width: 3.0, height: 4.0 }),
+    let loggers: Vec<Box<dyn Logger>> = vec![
+        Box::new(ConsoleLogger),
+        Box::new(FileLogger { path: "app.log".to_string() }),
     ];
 
-    for shape in &shapes {
-        println!("面積は {}", shape.area());
+    for logger in &loggers {
+        logger.log("起動しました");
     }
 }
 ```
 
-`Circle` と `Rectangle` は別の型なので、そのままでは同じ `Vec` に混ぜられません（一つの `Vec` には同じ型しか入らないからです）。`dyn Area` は、「Area さえ持っていれば、型が違っても同じ位置に置いてよい」という書き方です。これを使うと、ばらばらの型を一つの `Vec` にまとめ、同じ `area()` で回せます。`Box` で包んでいる理由やその仕組みは [スマートポインタ](smart-pointers.md) で扱います。ここでは、違う型を一つにまとめたいときに `dyn` を使う、とだけ覚えておけば十分です。
+`ConsoleLogger` と `FileLogger` は別の型なので、そのままでは同じ `Vec` に混ぜられません（一つの `Vec` には同じ型しか入らないからです）。`dyn Logger` は、「Logger さえ持っていれば、型が違っても同じ位置に置いてよい」という書き方です。これを使うと、ばらばらの型を一つの `Vec` にまとめ、同じ `log()` で回せます。`Box` で包んでいる理由やその仕組みは [スマートポインタ](smart-pointers.md) で扱います。ここでは、違う型を一つにまとめたいときに `dyn` を使う、とだけ覚えておけば十分です。
 
 ## まとめ
 
