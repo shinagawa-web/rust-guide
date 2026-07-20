@@ -135,10 +135,10 @@
   - [ライフタイム](concepts/lifetime.md)
   - [エラーハンドリング](concepts/error-handling.md)
   - [トレイト](concepts/traits.md)
+  - [ジェネリクス](concepts/generics.md)
   - [クロージャ](concepts/closures.md)
   - [コレクション](concepts/collections.md)
   - [スマートポインタ](concepts/smart-pointers.md)
-  - [ジェネリクス](concepts/generics.md)
   - [並行性](concepts/concurrency.md)
 
 ---
