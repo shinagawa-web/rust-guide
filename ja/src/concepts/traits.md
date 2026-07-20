@@ -64,6 +64,25 @@ impl Logger for FileLogger {
 名前を付けたことで、関数の側が変わります。「Logger を持つ型なら何でも」受け取る関数を、一つだけ書けます。
 
 ```rust
+struct ConsoleLogger;
+struct FileLogger { path: String }
+
+trait Logger {
+    fn log(&self, message: &str);
+}
+
+impl Logger for ConsoleLogger {
+    fn log(&self, message: &str) {
+        println!("{message}");
+    }
+}
+
+impl Logger for FileLogger {
+    fn log(&self, message: &str) {
+        println!("({} に書き込み) {message}", self.path);
+    }
+}
+
 fn process(logger: &impl Logger) {
     logger.log("処理を開始します");
     logger.log("処理が完了しました");
@@ -99,6 +118,22 @@ trait Logger {
 `warn` には中身が書いてあります。「`[WARN]` を前に付けて `log` を呼ぶ」という処理は、どの出力先でも同じだからです。だから各型の `impl` で書かなくても、`Logger` を持つ型なら最初から `warn` を使えます。
 
 ```rust
+struct ConsoleLogger;
+
+trait Logger {
+    fn log(&self, message: &str);
+
+    fn warn(&self, message: &str) {
+        self.log(&format!("[WARN] {message}"));
+    }
+}
+
+impl Logger for ConsoleLogger {
+    fn log(&self, message: &str) {
+        println!("{message}");
+    }
+}
+
 fn main() {
     let console = ConsoleLogger;
     console.warn("ディスクが残り少なくなっています");
@@ -159,6 +194,25 @@ fn main() {
 最後に、型の違うものをまとめて扱いたい場面を見ます。複数の出力先に同じログを流す、というものです。
 
 ```rust
+struct ConsoleLogger;
+struct FileLogger { path: String }
+
+trait Logger {
+    fn log(&self, message: &str);
+}
+
+impl Logger for ConsoleLogger {
+    fn log(&self, message: &str) {
+        println!("{message}");
+    }
+}
+
+impl Logger for FileLogger {
+    fn log(&self, message: &str) {
+        println!("({} に書き込み) {message}", self.path);
+    }
+}
+
 fn main() {
     let loggers: Vec<Box<dyn Logger>> = vec![
         Box::new(ConsoleLogger),
