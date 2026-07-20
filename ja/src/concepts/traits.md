@@ -6,7 +6,22 @@
 
 ## 同じふるまいを型ごとに書く
 
-「どんな出力先にも、同じ内容を書き込む」関数を書きたいとします。
+コンソールとファイル、それぞれへ書き込む関数です。
+
+```rust
+struct ConsoleLogger;
+struct FileLogger { path: String }
+
+fn console_log(_logger: &ConsoleLogger, message: &str) {
+    println!("{message}");
+}
+
+fn file_log(logger: &FileLogger, message: &str) {
+    println!("({} に書き込み) {message}", logger.path);
+}
+```
+
+どちらも「ログを書き込む」処理ですが、関数名が別々です。「どんな出力先にも同じ内容を書き込む」関数を一つ書こうとすると、型の位置に何を書けばいいか決められません。
 
 ```rust
 fn process(logger: ???, message: &str) {
@@ -14,7 +29,7 @@ fn process(logger: ???, message: &str) {
 }
 ```
 
-型の位置に何を書けばいいか決められません。`ConsoleLogger` を書けばファイルに渡せなくなる。出力先ごとに `process_console`・`process_file` と増やしていくと、出力先が増えるたびに同じ処理を何度も書くことになります。
+`ConsoleLogger` を書けばファイルに渡せなくなる。出力先ごとに `process_console`・`process_file` と増やしていくと、出力先が増えるたびに同じ処理を何度も書くことになります。
 
 ## 共通のふるまいに名前を付ける
 
