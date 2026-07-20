@@ -137,6 +137,23 @@ fn main() {
 
 なお、`{:?}` の `Debug` は開発者が中身を確認するための表示です。利用者に見せる整った表示は `Display`（`{}` で使う）という別のトレイトが担います。`Display` は `derive` できないので、中身を自分で書きます。
 
+```rust
+use std::fmt;
+
+struct Point { x: i32, y: i32 }
+
+impl fmt::Display for Point {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+
+fn main() {
+    let p = Point { x: 1, y: 2 };
+    println!("{p}");   // (1, 2)
+}
+```
+
 ## 違う型を一つにまとめる
 
 最後に、型の違うものをまとめて扱いたい場面を見ます。複数の出力先に同じログを流す、というものです。
