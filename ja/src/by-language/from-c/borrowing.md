@@ -21,7 +21,7 @@ C の配列は型の中に長さが入っていません。`sizeof` で計算は
 
 int main(void) {
     int xs[3] = {1, 2, 3};
-    printf("%zu\n", sizeof(xs)); // 12 — int 4バイト × 3個
+    printf("%zu\n", sizeof(xs)); // 12 — int 4バイト × 3個（int が 4 バイトの環境の場合）
 }
 ```
 
@@ -59,9 +59,9 @@ C で同じことをやろうとすると、配列をポインタに代入した
 
 int main(void) {
     int xs[3] = {1, 2, 3};
-    printf("%zu\n", sizeof(xs)); // 12 — int 4バイト × 3個
+    printf("%zu\n", sizeof(xs)); // 12 — int 4バイト × 3個（int が 4 バイトの環境の場合）（int が 4 バイトの環境の場合）
     int *s = xs;
-    printf("%zu\n", sizeof(s));  // 8  — ポインタのサイズ。長さの情報が消えた
+    printf("%zu\n", sizeof(s));  // 8  — ポインタのサイズ（64ビット環境の場合）。長さの情報が消えた
     printf("[%d, %d, %d]\n", s[0], s[1], s[2]); // 個数を自分で知っていないと書けない
 }
 ```
@@ -79,8 +79,8 @@ flowchart LR
 
 ```rust
 fn main() {
-    println!("{}", std::mem::size_of::<&[i32; 3]>()); // 8  — ポインタ 1 語だけ
-    println!("{}", std::mem::size_of::<&[i32]>());    // 16 — ポインタ＋長さで 2 語
+    println!("{}", std::mem::size_of::<&[i32; 3]>()); // 8  — ポインタ 1 語だけ（64ビット環境の場合）
+    println!("{}", std::mem::size_of::<&[i32]>());    // 16 — ポインタ＋長さで 2 語（64ビット環境の場合）
 }
 ```
 
