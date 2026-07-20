@@ -6,22 +6,15 @@
 
 ## 同じふるまいを型ごとに書く
 
-コンソールとファイル、それぞれへ書き込む関数です。
+「どんな出力先にも、同じ内容を書き込む」関数を書きたいとします。
 
 ```rust
-struct ConsoleLogger;
-struct FileLogger { path: String }
-
-fn console_log(_logger: &ConsoleLogger, message: &str) {
-    println!("{message}");
-}
-
-fn file_log(logger: &FileLogger, message: &str) {
-    println!("({} に書き込み) {message}", logger.path);
+fn process(logger: ???, message: &str) {
+    // コンソールなら console_log、ファイルなら file_log？
 }
 ```
 
-どちらも「ログを書き込む」処理なのに、関数名は別々です。このくらいなら困りませんが、「どんな出力先にも、同じ内容を書き込む」ような処理を書こうとすると行き詰まります。相手がコンソールかファイルかで呼ぶ関数が変わるので、型ごとに分岐を書くか、型の数だけ処理を用意することになる。出力先が増えるほど、手に負えなくなります。
+型の位置に何を書けばいいか決められません。`ConsoleLogger` を書けばファイルに渡せなくなる。出力先ごとに `process_console`・`process_file` と増やしていくと、出力先が増えるたびに同じ処理を何度も書くことになります。
 
 ## 共通のふるまいに名前を付ける
 
