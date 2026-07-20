@@ -133,6 +133,8 @@ cargo embed
 
 右に傾けるとスマイル、左に傾けるとハートが表示されれば成功です。
 
+うまく動かないときは、[サンプルリポジトリの sensor ブランチ](https://github.com/shinagawa-web/rust-guide-sample-beginner-embedded/tree/sensor)のコードと見比べてください。
+
 ---
 
 加速度センサの値を読んで絵を動かせました。次のページではここまでをふりかえります。
