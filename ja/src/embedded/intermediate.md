@@ -33,7 +33,7 @@ Android スマホが手元にない場合、Mac の Chrome でも動作します
 全 6 ページ。手元に micro:bit とスマホを置いて、書き込みながら読み進めてください。
 
 1. [マイコンとスマホが繋がる仕組み](intermediate/ble-overview.md)。スマホと繋がる仕組みの登場人物を把握する
-2. スマホから micro:bit を見つける。最初の山場。セットアップの手順が多い
+2. [スマホから micro:bit を見つける](intermediate/advertising.md)。最初の山場。セットアップの手順が多い
 3. 気温データを送る。センサの値をスマホのブラウザにリアルタイムで届ける
 4. コマンドを受け取る。スマホのボタンで micro:bit の LED を操作する
 5. Web ページを作る。HTML と JavaScript でスマホの画面を作る
