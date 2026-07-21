@@ -85,6 +85,7 @@
     - [センサで絵を動かす](embedded/beginner/sensor.md)
     - [ここまでとこの先](embedded/beginner/wrap-up.md)
   - [中級](embedded/intermediate.md)
+    - [マイコンとスマホが繋がる仕組み](embedded/intermediate/ble-overview.md)
 
 ---
 
