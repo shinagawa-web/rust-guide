@@ -5,3 +5,7 @@
 .chapter-fold-toggle {
   display: none;
 }
+
+.chapter li > a.toggle {
+  display: none;
+}
