@@ -84,6 +84,7 @@
     - [ボタンで絵を切り替える](embedded/beginner/button.md)
     - [センサで絵を動かす](embedded/beginner/sensor.md)
     - [ここまでとこの先](embedded/beginner/wrap-up.md)
+  - [中級](embedded/intermediate.md)
 
 ---
 
