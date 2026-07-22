@@ -87,6 +87,7 @@
   - [中級](embedded/intermediate.md)
     - [マイコンとスマホが繋がる仕組み](embedded/intermediate/ble-overview.md)
     - [スマホから micro:bit を見つける](embedded/intermediate/advertising.md)
+    - [気温をスマホに届ける](embedded/intermediate/temperature.md)
 
 ---
 
