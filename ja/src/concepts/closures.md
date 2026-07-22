@@ -114,7 +114,7 @@ fn main() {
 
 ```rust
 fn is_big(x: i32) -> bool {
-    x > threshold // error: cannot find value `threshold` in this scope
+    x > threshold // コンパイルエラー: cannot find value `threshold` in this scope
 }
 ```
 
@@ -139,14 +139,22 @@ fn main() {
 前のセクションの `apply` は `fn(i32) -> i32` を引数に取っていました。この型はキャプチャを持つクロージャを渡せません。
 
 ```rust
+fn apply(nums: &[i32], f: fn(i32) -> i32) -> Vec<i32> {
+    let mut result = Vec::new();
+    for &n in nums {
+        result.push(f(n));
+    }
+    result
+}
+
 fn main() {
     let factor = 3;
     let nums = vec![1, 2, 3, 4, 5];
-    apply(&nums, |x| x * factor); // error: expected fn pointer, found closure
+    apply(&nums, |x| x * factor); // コンパイルエラー: expected fn pointer, found closure
 }
 ```
 
-キャプチャを持つクロージャを受け取るには `impl Fn(...)` を使います。
+キャプチャした変数を参照するクロージャを受け取るには `impl Fn(...)` を使います。
 
 ```rust
 fn apply(nums: &[i32], f: impl Fn(i32) -> i32) -> Vec<i32> {
@@ -168,4 +176,4 @@ fn main() {
 
 - クロージャは `|引数| 処理` で書く名前のない関数。引数と返り値の型は使われ方から推論される。
 - 外側のスコープの変数を参照できる（キャプチャ）。通常の関数にはこれができない。
-- クロージャを引数として受け取るには `impl Fn` を使う。`fn` 型ではキャプチャを持つクロージャを渡せない。
+- クロージャを引数として受け取るには `impl Fn` を使う。`fn` 型ではキャプチャを持つクロージャを渡せない。キャプチャした変数を変更・消費するクロージャにはそれぞれ別のトレイトが必要になる。
