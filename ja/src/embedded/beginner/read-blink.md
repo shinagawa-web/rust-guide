@@ -38,7 +38,7 @@ rustflags = ["-C", "link-arg=-Tlink.x"]
 runner = "probe-rs run --chip nRF52833_xxAA"
 ```
 
-`target` の行が、ビルド先を固定しています。`thumbv7em-none-eabihf` は micro:bit の CPU に対応する名前で、2章で `rustup target add` したものです。この行があるので、`cargo build` や `cargo embed` のたびに `--target` を指定しなくて済みます。
+`target` の行が、ビルド先を固定しています。`thumbv7em-none-eabihf` は micro:bit の CPU に対応する名前で、「ボードを光らせるまで」のページで `rustup target add` したものです。この行があるので、`cargo build` や `cargo embed` のたびに `--target` を指定しなくて済みます。
 
 `rustflags` と `runner` はそのままにしておく設定です。
 
