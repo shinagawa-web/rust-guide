@@ -4,7 +4,7 @@
 
 ## Vec
 
-要素数が決まっているなら配列で十分です。配列はスタックに積まれ、サイズをコンパイル時に決めるため余分な確保がありません。
+要素数が決まっているなら配列で十分です。配列はサイズをコンパイル時に決め、所有元の場所にインラインで保持されるため余分な確保がありません。
 
 ```rust
 fn main() {
@@ -90,7 +90,7 @@ fn main() {
 }
 ```
 
-`insert` の引数から型を推論するので型注釈は不要です。ただし型は最初の `insert` で確定し、以降は同じ型のキーと値しか受け付けません。
+`insert` の引数から型を推論するので型注釈は不要です。ただし1つの `HashMap` のキーと値はそれぞれ同じ型でなければなりません。
 
 ```rust
 use std::collections::HashMap;
@@ -119,7 +119,7 @@ fn main() {
 }
 ```
 
-`get` は値そのものではなく参照で返します。計算に使うときは `*` でデリファレンスします。
+`get` は値そのものではなく参照で返します。この例では `*` で明示的に値を取り出してから計算しています。
 
 ```rust
 use std::collections::HashMap;
@@ -144,11 +144,11 @@ fn main() {
     let words = vec!["the", "fox", "jumps", "the", "fox", "the"];
     let mut counts = HashMap::new();
 
-    for word in &words {
+    for word in words {
         *counts.entry(word).or_insert(0) += 1;
     }
 
-    println!("{:?}", counts); // {"the": 3, "fox": 2, "jumps": 1}
+    println!("{:?}", counts); // 出力例: {"fox": 2, "the": 3, "jumps": 1}（順序は実行ごとに異なる）
 }
 ```
 
