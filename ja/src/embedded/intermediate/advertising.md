@@ -34,7 +34,7 @@ s140_nrf52_7.3.0_softdevice.hex
 
 ### 書き込み
 
-probe-rs で micro:bit に書き込みます。
+probe-rs は USB 経由でファームウェアを書き込む Rust 製のツールです。micro:bit を USB でつないだ状態で次のコマンドを実行します。
 
 ```sh
 probe-rs download --chip nRF52833_xxAA --binary-format hex s140_nrf52_7.3.0_softdevice.hex
@@ -51,7 +51,7 @@ cargo new microbit-ble
 cd microbit-ble
 ```
 
-設定ファイルを3つ用意します。
+設定ファイルを4つ用意します。
 
 ### Cargo.toml
 
@@ -81,11 +81,21 @@ debug = true
 opt-level = "s"
 ```
 
-`nrf52833` は使用するチップを指定するフィーチャです。`s140` と `ble-peripheral` が BLE の通信に必要で、`ble-gatt-server` は3章以降で使います。`critical-section-impl` は no_std 環境でクリティカルセクション（割り込み制御）の実装を提供するフィーチャです。`nrf-softdevice-s140` は S140 の定数・型定義を含む補助クレートで、`nrf-softdevice` の s140 フィーチャと組み合わせて使います。
+`features = [...]` はコンパイル時に有効にするオプション機能を選ぶ仕組みです。`nrf-softdevice` の各フィーチャの意味は次の通りです。
+
+| フィーチャ | 用途 |
+|---|---|
+| `nrf52833` | 使用チップを指定 |
+| `s140` | S140 SoftDevice を使う |
+| `ble-peripheral` | ペリフェラル役で BLE 通信に必要 |
+| `ble-gatt-server` | GATT サーバー機能（3章以降） |
+| `critical-section-impl` | no_std 環境でのクリティカルセクション実装 |
+
+`nrf-softdevice-s140` は S140 の定数・型定義を含む補助クレートで、`nrf-softdevice` と組み合わせて使います。
 
 ### memory.x
 
-SoftDevice がフラッシュの先頭 156KB を使うため、Rust アプリは 0x27000 から始めます。
+リンカ（コードをメモリに配置するプログラム）に対して「フラッシュと RAM のどこから使えるか」を伝えるファイルです。SoftDevice がフラッシュの先頭 156KB を使うため、Rust アプリは 0x27000 から始めます。
 
 ```text
 MEMORY
@@ -99,6 +109,8 @@ RAM の開始も通常より後ろにずらしています。SoftDevice が RAM 
 
 ### .cargo/config.toml
 
+ビルドターゲットやリンカへの追加オプションをまとめる設定ファイルです。プロジェクトごとに置くことで、`cargo build` や `cargo run` の動作を固定できます。
+
 ```toml
 [build]
 target = "thumbv7em-none-eabihf"
@@ -111,9 +123,33 @@ rustflags = ["-C", "link-arg=-Tlink.x", "-C", "link-arg=-Tdefmt.x"]
 runner = "probe-rs run --chip nRF52833_xxAA"
 ```
 
-defmt は組み込み向けのログライブラリです。RTT（Real-Time Transfer）という仕組みでホスト PC にログを転送します。`DEFMT_LOG = "debug"` を設定しないとログが出力されません。`link.x` はメモリレイアウト（`memory.x`）を読み込むリンカスクリプトです。`defmt.x` は defmt のシンボル情報を渡すためのものです。どちらも `rustflags` で明示的に渡す必要があります。
+- `target` — ビルド先のアーキテクチャを指定します。`thumbv7em-none-eabihf` は micro:bit の ARM Cortex-M4 に対応する値です。
+- `DEFMT_LOG` — defmt（組み込み向けログライブラリ）のログレベルです。`"debug"` にしないとログが出力されません。defmt は RTT（Real-Time Transfer）という仕組みでホスト PC にログを転送します。
+- `rustflags` — リンカに渡す追加オプションです。`link.x` はメモリレイアウト（`memory.x`）を読み込むリンカスクリプト、`defmt.x` は defmt のシンボル情報を渡すためのものです。
+- `runner` — `cargo run` を使う場合の書き込みコマンドです。このガイドでは `cargo embed` を使うため直接は使いませんが、設定しておいても問題ありません。
 
-## アドバタイズのコードを書く
+### Embed.toml
+
+`cargo embed` の動作を設定するファイルです。
+
+```toml
+[default.general]
+chip = "nRF52833_xxAA"
+
+[default.reset]
+halt_afterwards = false
+
+[default.rtt]
+enabled = true
+timeout = 5000
+```
+
+- `chip` — 書き込み先のチップを指定します。micro:bit v2 に搭載されている nRF52833 の型番です。
+- `halt_afterwards` — 書き込み後にチップを停止させるかどうかです。`false` にすると書き込み直後にプログラムが動き始めます。
+- `rtt.enabled` — RTT ログをターミナルに表示するかどうかです。`true` にすると `defmt::info!()` の出力がそのまま画面に流れます。
+- `rtt.timeout` — RTT の接続を待つ時間（ミリ秒）です。起動に時間がかかる場合に備えて余裕を持たせています。
+
+## スマホのスキャンに現れるコードを書く
 
 ペリフェラルは接続を待つ間、自分の存在を定期的に電波で発信しています。この発信をアドバタイズと呼びます。スマホが近くをスキャンすると、アドバタイズを受け取って端末一覧に "micro:bit" が表示されます。
 
@@ -209,15 +245,62 @@ async fn main(spawner: Spawner) {
 }
 ```
 
-`embassy_nrf::init()` は `Softdevice::enable` より先に呼ぶ必要があります。逆にすると embassy-time の RTC1 タイマドライバが起動せず、次の章で Notify ループが止まります。
+コードは4つのブロックで構成されています。
+
+### embassy-nrf の初期化
+
+```rust
+let mut nrf_config = embassy_nrf::config::Config::default();
+nrf_config.time_interrupt_priority = Priority::P2;
+let _p = embassy_nrf::init(nrf_config);
+```
+
+SoftDevice を有効にする前に embassy-nrf を初期化しています。SoftDevice は割り込み優先度 P0・P1・P4 を BLE 処理のために占有するため、アプリのタイマが同じ優先度を使うと衝突します。`time_interrupt_priority = Priority::P2` で安全な優先度に下げてから渡すことで衝突を避けています。`embassy_nrf::init()` を `Softdevice::enable` より後に呼ぶと RTC1 タイマドライバが起動せず、次の章で Notify ループが止まります。
+
+### SoftDevice の設定
+
+```rust
+let config = nrf_softdevice::Config {
+    // ...
+    gap_device_name: Some(raw::ble_gap_cfg_device_name_t {
+        p_value: b"micro:bit" as *const u8 as _,
+        // ...
+    }),
+    ..Default::default()
+};
+```
+
+このブロックは定型です。注目するのは `gap_device_name` だけで、接続後にスマホの画面に表示されるデバイス名を設定しています。他のフィールドは接続数や通信パケットのサイズ上限で、ここでは変更不要です。
+
+### SoftDevice の起動
+
+```rust
+let sd = Softdevice::enable(&config);
+spawner.spawn(softdevice_task(sd)).unwrap();
+```
+
+`Softdevice::enable` で SoftDevice を有効化したあと、`softdevice_task` を別タスクとして起動しています。このタスクは BLE のイベント処理ループで、BLE が動くには常に動き続けている必要があります。`spawner.spawn(...)` は非同期タスクを起動する embassy の仕組みで、`spawner` は `main` の引数から受け取ります。
+
+### アドバタイズと接続待ち
+
+```rust
+loop {
+    let _conn = peripheral::advertise_connectable(sd, adv, &peripheral::Config::default())
+        .await
+        .unwrap();
+    defmt::info!("connected");
+}
+```
+
+`advertise_connectable` を呼んでアドバタイズを開始し、スマホが接続してくるまで `.await` で待ちます。接続が成立すると `_conn` に接続情報が入り、ログを出したあと次のループに入ります。`_conn` がスコープを抜けて破棄されると接続が切断されるため、ループ先頭に戻って再びアドバタイズを始めます。
 
 ## ビルドして書き込む
 
 ```sh
-cargo run --release
+cargo embed
 ```
 
-probe-rs がフラッシュに書き込み、そのまま実行を開始します。RTT ログが流れ始めれば書き込み成功です。
+ビルド・書き込み・実行をまとめて行います。RTT ログが流れ始めれば書き込み成功です。
 
 ## nRF Connect で確認する
 
