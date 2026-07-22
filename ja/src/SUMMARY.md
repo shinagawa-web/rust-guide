@@ -88,6 +88,8 @@
     - [マイコンとスマホが繋がる仕組み](embedded/intermediate/ble-overview.md)
     - [スマホから micro:bit を見つける](embedded/intermediate/advertising.md)
     - [気温をスマホに届ける](embedded/intermediate/temperature.md)
+    - [スマホから LED を操作する](embedded/intermediate/led.md)
+    - [Web ページでスマホから操作する](embedded/intermediate/web.md)
 
 ---
 
