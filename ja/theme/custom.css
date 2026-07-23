@@ -2,10 +2,10 @@
   display: none;
 }
 
-.chapter-fold-toggle {
+.chapter li > a.toggle {
   display: none;
 }
 
-.chapter li > a.toggle {
-  display: none;
+.chapter li.chapter-item > a:first-child {
+  flex: 1;
 }
