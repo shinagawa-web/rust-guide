@@ -1,6 +1,6 @@
 # WebAssembly
 
-Rust で書いたコードがブラウザの中で動く。JavaScript ではなく Rust のコードが、ページを開いた瞬間に実行される。WebAssembly はその仕組みです。
+Rust で書いたコードがブラウザの中で動く。Rust を wasm にコンパイルして JavaScript から呼び出す——それが WebAssembly の仕組みです。
 
 速度が求められる処理を JavaScript の外に出したい、Cloudflare Workers のようなエッジで動かしたい——そういった場面で Rust と WebAssembly の組み合わせが使われています。このガイドでは、ブラウザで動く小さな diff ツールを起点に、最終的には自分でデプロイしたエッジの API まで持っていきます。
 
