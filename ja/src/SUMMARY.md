@@ -84,6 +84,13 @@
     - [ボタンで絵を切り替える](embedded/beginner/button.md)
     - [センサで絵を動かす](embedded/beginner/sensor.md)
     - [ここまでとこの先](embedded/beginner/wrap-up.md)
+  - [中級](embedded/intermediate.md)
+    - [マイコンとスマホが繋がる仕組み](embedded/intermediate/ble-overview.md)
+    - [スマホから micro:bit を見つける](embedded/intermediate/advertising.md)
+    - [気温をスマホに届ける](embedded/intermediate/temperature.md)
+    - [スマホから LED を操作する](embedded/intermediate/led.md)
+    - [Web ページから micro:bit を操作する](embedded/intermediate/web.md)
+    - [ここまでとこの先](embedded/intermediate/wrap-up.md)
 
 ---
 
