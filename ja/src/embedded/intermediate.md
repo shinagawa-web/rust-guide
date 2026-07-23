@@ -36,8 +36,8 @@ Android スマホが手元にない場合、Mac の Chrome でも動作します
 2. [スマホから micro:bit を見つける](intermediate/advertising.md)。最初の山場。セットアップの手順が多い
 3. [気温をスマホに届ける](intermediate/temperature.md)。センサの値を Notify で送る
 4. [スマホから LED を操作する](intermediate/led.md)。Write でコマンドを受け取る
-5. [Web ページでスマホから操作する](intermediate/web.md)。HTML と JavaScript でスマホの画面を作る
-6. ここまでとこの先。学んだことを振り返る
+5. [Web ページから micro:bit を操作する](intermediate/web.md)。HTML と JavaScript でスマホの画面を作る
+6. [ここまでとこの先](intermediate/wrap-up.md)。学んだことを振り返る
 
 2〜4ページでは nRF Connect というスマホの BLE 検査アプリを使って、Rust 側の動作を確認しながら進めます。5ページ目でそれを自作の Web ページに置き換えると、最終的なデモが完成します。
 

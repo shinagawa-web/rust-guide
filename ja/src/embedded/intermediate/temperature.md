@@ -45,6 +45,14 @@ use embassy_time::Timer;
 use nrf_softdevice::temperature_celsius;
 ```
 
+また、`static ADV_DATA` の前に次の行を追加します。
+
+```rust
+defmt::timestamp!("{=u32}", 0u32);
+```
+
+defmt のログには本来タイムスタンプが付きます。このマクロで固定値 `0` を返すよう上書きすることで、RTT ログの出力形式を `0 INFO connected` のように安定させています。
+
 既存の `nrf_softdevice::ble` の `use` 文に `gatt_server` を追加します。
 
 ```rust

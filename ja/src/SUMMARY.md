@@ -89,7 +89,8 @@
     - [スマホから micro:bit を見つける](embedded/intermediate/advertising.md)
     - [気温をスマホに届ける](embedded/intermediate/temperature.md)
     - [スマホから LED を操作する](embedded/intermediate/led.md)
-    - [Web ページでスマホから操作する](embedded/intermediate/web.md)
+    - [Web ページから micro:bit を操作する](embedded/intermediate/web.md)
+    - [ここまでとこの先](embedded/intermediate/wrap-up.md)
 
 ---
 
