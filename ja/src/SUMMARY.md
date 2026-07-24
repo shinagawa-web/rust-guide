@@ -78,7 +78,7 @@
     - [変更をふり返る](low-level/beginner/review-change.md)
   - [中級](low-level/intermediate.md)
     - [作ったツールを人に渡す](low-level/intermediate/distribute.md)
-    - [`ls -al` と同じ生データにたどり着く](low-level/intermediate/raw-data.md)
+    - [ファイルのメタデータを読む](low-level/intermediate/raw-data.md)
     - [サイズと更新日時を表示する](low-level/intermediate/size-date.md)
     - [所有者とグループを名前で出す](low-level/intermediate/owner-group.md)
     - [`ls -al` を組み上げる](low-level/intermediate/ls-al.md)

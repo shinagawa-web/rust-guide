@@ -50,7 +50,7 @@ drwxr-xr-x 2 user user  4096 Jul 10 09:12 src
 次の順で進めます。
 
 1. [作ったツールを人に渡す](intermediate/distribute.md)
-2. [`ls -al` と同じ生データにたどり着く](intermediate/raw-data.md)
+2. [ファイルのメタデータを読む](intermediate/raw-data.md)
 3. [サイズと更新日時を表示する](intermediate/size-date.md)
 4. [所有者とグループを名前で出す](intermediate/owner-group.md)
 5. [`ls -al` を組み上げる](intermediate/ls-al.md)
