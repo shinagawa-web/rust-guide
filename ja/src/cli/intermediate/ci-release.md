@@ -44,9 +44,19 @@ jobs:
         run: gh release upload ${{ github.ref_name }} target/${{ matrix.target }}/release/${{ matrix.artifact }}
 ```
 
-`strategy.matrix` に3つの組み合わせを定義しています。GitHub Actions はこの数だけジョブを並列で起動します。それぞれのジョブが対応する OS のランナーで動き、ビルドした実行ファイルを Release にアップロードします。
+`strategy.matrix` に3つの組み合わせを定義しています。GitHub Actions はこの数だけジョブを並列で起動します。`runs-on: ${{ matrix.os }}` は各ジョブの実行環境で、`matrix.os` にその行の値（`ubuntu-latest` など）が入ります。`matrix.target` や `matrix.artifact` も同じ仕組みで各ステップに展開されます。
 
-`GITHUB_TOKEN` はリポジトリに自動的に用意されているトークンで、設定は不要です。
+各 `target` は Rust のビルドターゲット名で、OS と CPU の組み合わせを表しています。
+
+| target | 意味 |
+|--------|------|
+| `x86_64-unknown-linux-gnu` | Linux（x86_64） |
+| `aarch64-apple-darwin` | macOS（Apple Silicon） |
+| `x86_64-pc-windows-msvc` | Windows（x86_64） |
+
+`rustup target add` は、そのターゲット向けのコンパイラツールチェーンを追加するコマンドです。Rust はデフォルトでは実行環境向けのターゲットしか入っていないため、`cargo build --target` で指定するターゲットを事前に追加しておく必要があります。
+
+`GITHUB_TOKEN` はリポジトリに自動的に用意されているトークンで、設定は不要です。`gh release upload` がこのトークンを使って Release にファイルを添付します。`${{ github.ref_name }}` には push されたタグ名（例：`v0.2.0`）が入ります。
 
 ## リリースを作って push する
 
