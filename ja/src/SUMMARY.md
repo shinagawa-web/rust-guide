@@ -81,7 +81,7 @@
     - [ファイルのメタデータを読む](low-level/intermediate/raw-data.md)
     - [サイズと更新日時を表示する](low-level/intermediate/size-date.md)
     - [所有者とグループを名前で表示する](low-level/intermediate/owner-group.md)
-    - [`ls -al` を組み上げる](low-level/intermediate/ls-al.md)
+    - [size 列の幅を動的に揃える](low-level/intermediate/ls-al.md)
     - [補足：CI でクロスプラットフォーム配布](low-level/intermediate/ci-release.md)
 - [組み込み](embedded/README.md)
   - [初級](embedded/beginner.md)
