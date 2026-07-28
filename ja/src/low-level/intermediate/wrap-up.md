@@ -4,6 +4,10 @@
 
 初級の fmode はパーミッション文字列とファイル名だけを出す小さなツールでした。それが `ls -al` と同じ列構成で出力できる形になっています。
 
+中級を終えた状態のコードは、サンプルリポジトリの `ls-al` ブランチで確認できます。
+
+https://github.com/shinagawa-web/rust-guide-sample-intermediate-low-level/tree/ls-al
+
 ## できるようになったこと
 
 いまの fmode には、これだけのことができます。
