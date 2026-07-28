@@ -2,7 +2,7 @@
 
 OS は、ファイルごとにサイズ・更新日時・所有者・リンク数などのメタデータを持っています。これを Rust で読み出せるようになると、ファイルを扱うツールを書く土台ができます。`ls -al` はその土台の上に立つ典型例として、この中級の題材にしています。
 
-初級では fmode のコードを読んで表示の誤りを直しました。中級では fmode を起点にして列を一つずつ足し、`ls -al` と同じ出力を出せるところまで進みます。最終的には手元にインストールして配布できる状態にします。
+初級では fmode のコードを読んで表示の誤りを直しました。中級では、まず今の状態のまま配布できる形にして、そこから列を一つずつ足し、`ls -al` と同じ出力を出せるところまで進みます。
 
 このガイドは Linux を前提にします。macOS でもおおむね動きますが、出力例は Linux に合わせています。
 
@@ -38,12 +38,12 @@ $ fmode
 ```
 
 ```text
--rw-r--r-- 1 user user   284 Jul 10 09:12 Cargo.toml
--rw-r--r-- 1 user user   512 Jul 10 09:12 README.md
-drwxr-xr-x 2 user user  4096 Jul 10 09:12 src
+-rw-r--r-- 1 user user  284 Jul 10 17:05 Cargo.toml
+-rw-r--r-- 1 user user  512 Jul 10 17:05 README.md
+drwxr-xr-x 2 user user 4096 Jul 10 17:05 src
 ```
 
-左から順に permissions・nlink・owner・group・size・date・name で、`ls -al` と同じ列構成になります。
+左から順に permissions・nlink・user・group・size・mtime・name で、`ls -al` と同じ列構成になります。
 
 ## 進め方
 

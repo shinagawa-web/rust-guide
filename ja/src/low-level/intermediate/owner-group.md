@@ -6,7 +6,7 @@
 -rw-r--r-- 1 1000 1000    284 Jul 10 17:05 Cargo.toml
 ```
 
-`ls -al` はこの数字を `user`、`staff` のような名前で出します。Linux は uid と名前の対応を `/etc/passwd` に、gid と名前の対応を `/etc/group` に持っています。この章ではその2つのファイルを読んで変換します。
+`ls -al` はこの数字を `root`、`user` のような名前で出します。Linux は uid と名前の対応を `/etc/passwd` に、gid と名前の対応を `/etc/group` に持っています。この章ではその2つのファイルを読んで変換します。
 
 ## /etc/passwd の形式
 
@@ -120,4 +120,4 @@ $ cargo run
 drwxr-xr-x 2 user user   4096 Jul 10 17:05 src
 ```
 
-uid と gid が名前に変わり、`ls -al` の出力とほぼ同じ形になりました。次章ではリンク数（nlink）の扱いと列の桁揃えを仕上げます。
+uid と gid が名前に変わり、`ls -al` の出力とほぼ同じ形になりました。次章では size 列の幅を全エントリの最大桁数に合わせて動的に揃えます。

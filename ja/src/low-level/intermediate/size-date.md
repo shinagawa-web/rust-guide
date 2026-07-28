@@ -86,13 +86,24 @@ fn format_mtime(secs: i64) -> String {
 }
 ```
 
-`main` 内の `size` と `mtime` の2行を関数呼び出しに変えます。ディレクトリの場合とファイルの場合、どちらも同じ変更です。
+`main` 内の `size` と `mtime` の2行を関数呼び出しに変えます。ディレクトリの場合（変数名 `meta`）とファイルの場合（変数名 `metadata`）で受け取り変数名が異なりますが、変更の内容は同じです。
+
+ディレクトリの場合：
 
 ```diff
 -            let size = meta.size();
 -            let mtime = meta.mtime();
 +            let size = format_size(meta.size());
 +            let mtime = format_mtime(meta.mtime());
+```
+
+ファイルの場合：
+
+```diff
+-    let size = metadata.size();
+-    let mtime = metadata.mtime();
++    let size = format_size(metadata.size());
++    let mtime = format_mtime(metadata.mtime());
 ```
 
 ## 動かして確かめる
