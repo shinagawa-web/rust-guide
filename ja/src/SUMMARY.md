@@ -80,7 +80,7 @@
     - [作ったツールを人に渡す](low-level/intermediate/distribute.md)
     - [ファイルのメタデータを読む](low-level/intermediate/raw-data.md)
     - [サイズと更新日時を表示する](low-level/intermediate/size-date.md)
-    - [所有者とグループを名前で出す](low-level/intermediate/owner-group.md)
+    - [所有者とグループを名前で表示する](low-level/intermediate/owner-group.md)
     - [`ls -al` を組み上げる](low-level/intermediate/ls-al.md)
     - [補足：CI でクロスプラットフォーム配布](low-level/intermediate/ci-release.md)
 - [組み込み](embedded/README.md)
