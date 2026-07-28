@@ -23,7 +23,7 @@ format!("{:>6}", 4096)   // "  4096"
 
 ## mtime を日付文字列に変換する
 
-`meta.mtime()` が返す `i64` は、Unix エポック（1970年1月1日00:00:00 UTC）からの経過秒数です。この秒数を人が読める形にするには、日付と時刻への変換が要ります。
+この秒数を人が読める形にするには、日付と時刻への変換が要ります。
 
 標準ライブラリにはカレンダー計算の機能がないため、`chrono` クレートを使います。`chrono` は Unix 秒からローカル日時への変換と書式指定をまとめて行えます。
 
@@ -60,19 +60,21 @@ fn format_mtime(secs: i64) -> String {
 
 ## main.rs を更新する
 
-`format_size` と `format_mtime` を関数として定義し、`main` 内の `println!` でそれを使います。
+ファイル先頭の `use` に2行追加します。
+
+```diff
++use chrono::{DateTime, Local};
+ use std::env;
+ use std::fs;
+ use std::os::unix::fs::MetadataExt;
+ use std::os::unix::fs::PermissionsExt;
+ use std::process;
++use std::time::{Duration, UNIX_EPOCH};
+```
+
+`mod perm;` の直前に2つの関数を追加します。
 
 ```rust
-use chrono::{DateTime, Local};
-use std::env;
-use std::fs;
-use std::os::unix::fs::MetadataExt;
-use std::os::unix::fs::PermissionsExt;
-use std::process;
-use std::time::{Duration, UNIX_EPOCH};
-
-mod perm;
-
 fn format_size(size: u64) -> String {
     format!("{:>6}", size)
 }
@@ -82,57 +84,15 @@ fn format_mtime(secs: i64) -> String {
     let datetime: DateTime<Local> = system_time.into();
     datetime.format("%b %e %H:%M").to_string()
 }
+```
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
+`main` 内の `size` と `mtime` の2行を関数呼び出しに変えます。ディレクトリの場合とファイルの場合、どちらも同じ変更です。
 
-    let path = if args.len() < 2 {
-        ".".to_string()
-    } else {
-        args[1].clone()
-    };
-
-    let metadata = match fs::metadata(&path) {
-        Ok(m) => m,
-        Err(e) => {
-            eprintln!("エラー: {}: {}", path, e);
-            process::exit(1);
-        }
-    };
-
-    if metadata.is_dir() {
-        let mut entries: Vec<_> = match fs::read_dir(&path) {
-            Ok(rd) => rd.filter_map(|e| e.ok()).collect(),
-            Err(e) => {
-                eprintln!("エラー: {}: {}", path, e);
-                process::exit(1);
-            }
-        };
-        entries.sort_by_key(|e| e.file_name());
-        for entry in entries {
-            let meta = match entry.metadata() {
-                Ok(m) => m,
-                Err(_) => continue,
-            };
-            let mode = meta.permissions().mode();
-            let nlink = meta.nlink();
-            let uid = meta.uid();
-            let gid = meta.gid();
-            let size = format_size(meta.size());
-            let mtime = format_mtime(meta.mtime());
-            let name = entry.file_name().to_string_lossy().to_string();
-            println!("{} {} {} {} {} {} {}", perm::format_mode(mode), nlink, uid, gid, size, mtime, name);
-        }
-    } else {
-        let mode = metadata.permissions().mode();
-        let nlink = metadata.nlink();
-        let uid = metadata.uid();
-        let gid = metadata.gid();
-        let size = format_size(metadata.size());
-        let mtime = format_mtime(metadata.mtime());
-        println!("{} {} {} {} {} {} {}", perm::format_mode(mode), nlink, uid, gid, size, mtime, path);
-    }
-}
+```diff
+-            let size = meta.size();
+-            let mtime = meta.mtime();
++            let size = format_size(meta.size());
++            let mtime = format_mtime(meta.mtime());
 ```
 
 ## 動かして確かめる
