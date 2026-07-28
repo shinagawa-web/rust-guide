@@ -47,7 +47,7 @@ fn format_mtime(secs: i64) -> String {
 }
 ```
 
-`UNIX_EPOCH` に秒数分の `Duration` を足すと `SystemTime` になります。それを `DateTime<Local>` に変換すると、実行環境のタイムゾーンに合わせた日時が得られます。
+秒数を `DateTime<Local>` に変換すると、実行環境のタイムゾーンに合わせた日時が得られます。
 
 `format!` に渡している `"%b %e %H:%M"` は `ls -al` と同じ並びです。
 
