@@ -81,7 +81,7 @@ $ cargo build --release
 
 `cargo build` は、ソースコードをビルドして実行ファイルを作るところまでをやるコマンドです。`--release` を付けると、最適化した実行ファイルが `target/release/rwc` にできます。`cargo run` が使う開発用のビルドより動作が速く、配るのはこちらです。
 
-このファイルを GitHub の Release に添付します。`gh release create` は GitHub CLI のコマンドです。まだインストールしていない場合は https://cli.github.com からインストールし、`gh auth login` で認証してから進めます。
+このファイルを GitHub の Release に添付します。`gh release create` は GitHub CLI のコマンドです。まだインストールしていない場合は [cli.github.com](https://cli.github.com) からインストールし、`gh auth login` で認証してから進めます。
 
 タグの作成・リリースの公開・ファイルの添付を一度に行えます。
 
