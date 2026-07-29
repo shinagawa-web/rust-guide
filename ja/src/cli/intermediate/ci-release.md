@@ -19,18 +19,24 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact: rwc
+            release_name: rwc-x86_64-linux
           - os: macos-latest
             target: aarch64-apple-darwin
             artifact: rwc
+            release_name: rwc-aarch64-macos
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact: rwc.exe
+            release_name: rwc-x86_64-windows.exe
 
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +47,10 @@ jobs:
       - name: Upload to release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ github.ref_name }} target/${{ matrix.target }}/release/${{ matrix.artifact }}
+        shell: bash
+        run: |
+          cp target/${{ matrix.target }}/release/${{ matrix.artifact }} ${{ matrix.release_name }}
+          gh release upload ${{ github.ref_name }} ${{ matrix.release_name }}
 ```
 
 `strategy.matrix` に3つの組み合わせを定義しています。GitHub Actions はこの数だけジョブを並列で起動します。`runs-on: ${{ matrix.os }}` は各ジョブの実行環境で、`matrix.os` にその行の値（`ubuntu-latest` など）が入ります。`matrix.target` や `matrix.artifact` も同じ仕組みで各ステップに展開されます。
@@ -55,6 +64,12 @@ jobs:
 | `x86_64-pc-windows-msvc` | Windows（x86_64） |
 
 `rustup target add` は、そのターゲット向けのコンパイラツールチェーンを追加するコマンドです。Rust はデフォルトでは実行環境向けのターゲットしか入っていないため、`cargo build --target` で指定するターゲットを事前に追加しておく必要があります。
+
+`permissions: contents: write` は、ワークフローに Release へのファイル書き込み権限を与える設定です。指定しないと `gh release upload` が 403 で失敗します。
+
+`fail-fast: false` は、一方のジョブが失敗しても残りのジョブを続けさせる設定です。デフォルトでは1つ失敗した時点で残りがキャンセルされます。
+
+`release_name` は添付するファイルの名前です。Linux と macOS のどちらもバイナリ名が `rwc` で同じになるため、OS ごとに別名を付けています（`rwc-x86_64-linux` など）。`cp` でいったんコピーしてから upload することで、Release に別々のファイルとして添付できます。
 
 `GITHUB_TOKEN` はリポジトリに自動的に用意されているトークンで、設定は不要です。`gh release upload` がこのトークンを使って Release にファイルを添付します。`${{ github.ref_name }}` には push されたタグ名（例：`v0.2.0`）が入ります。
 

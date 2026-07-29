@@ -41,11 +41,17 @@ use chrono::{DateTime, Local};
 use std::time::{Duration, UNIX_EPOCH};
 
 fn format_mtime(secs: i64) -> String {
-    let system_time = UNIX_EPOCH + Duration::from_secs(secs as u64);
+    let system_time = if secs >= 0 {
+        UNIX_EPOCH + Duration::from_secs(secs as u64)
+    } else {
+        UNIX_EPOCH - Duration::from_secs(secs.unsigned_abs())
+    };
     let datetime: DateTime<Local> = system_time.into();
     datetime.format("%b %e %H:%M").to_string()
 }
 ```
+
+`mtime()` は `i64` を返すため、Unix エポック（1970 年）以前のタイムスタンプは負の値になります。`as u64` で直接変換するとラップアラウンドして誤った値になるため、正負で加算・減算を切り替えています。
 
 秒数を `DateTime<Local>` に変換すると、実行環境のタイムゾーンに合わせた日時が得られます。
 
@@ -80,7 +86,11 @@ fn format_size(size: u64) -> String {
 }
 
 fn format_mtime(secs: i64) -> String {
-    let system_time = UNIX_EPOCH + Duration::from_secs(secs as u64);
+    let system_time = if secs >= 0 {
+        UNIX_EPOCH + Duration::from_secs(secs as u64)
+    } else {
+        UNIX_EPOCH - Duration::from_secs(secs.unsigned_abs())
+    };
     let datetime: DateTime<Local> = system_time.into();
     datetime.format("%b %e %H:%M").to_string()
 }
