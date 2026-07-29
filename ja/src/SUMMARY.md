@@ -128,6 +128,8 @@
     - [Makefile の代わりに Cargo](by-language/from-c/cargo.md)
     - [C言語 から Rust へ、ここまで](by-language/from-c/wrap-up.md)
   - [C++ から](by-language/from-cpp.md)
+    - [ほぼ読めるが、既定が違う](by-language/from-cpp/basics.md)
+    - [所有権とムーブ](by-language/from-cpp/ownership.md)
   - [Java から](by-language/from-java.md)
 
 ---
