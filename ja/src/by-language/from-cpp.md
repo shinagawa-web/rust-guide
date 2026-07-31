@@ -42,8 +42,8 @@ C++ と同じ感覚では書けないところ
 7. [エラー処理](from-cpp/error.md) — 例外から `Result` と `?` へ
 8. [トレイト](from-cpp/trait.md) — 純粋仮想関数・継承から trait へ
 9. [テンプレートとジェネリクス](from-cpp/generics.md) — テンプレートから、制約を持つジェネリクスへ
-10. 演算子オーバーロード — `operator` を trait に対応させる
-11. 並行性 — データ競合を型で防ぐ
+10. [演算子オーバーロード](from-cpp/operator-overloading.md) — `operator` を trait に対応させる
+11. [並行性](from-cpp/concurrency.md) — データ競合を型で防ぐ
 12. unsafe と FFI — C++ コードとの相互運用
 13. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
 

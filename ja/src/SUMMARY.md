@@ -137,6 +137,8 @@
     - [エラー処理](by-language/from-cpp/error.md)
     - [トレイト](by-language/from-cpp/trait.md)
     - [テンプレートとジェネリクス](by-language/from-cpp/generics.md)
+    - [演算子オーバーロード](by-language/from-cpp/operator-overloading.md)
+    - [並行性](by-language/from-cpp/concurrency.md)
   - [Java から](by-language/from-java.md)
 
 ---
