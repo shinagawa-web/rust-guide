@@ -130,6 +130,8 @@
   - [C++ から](by-language/from-cpp.md)
     - [ほぼ読めるが、既定が違う](by-language/from-cpp/basics.md)
     - [所有権とムーブ](by-language/from-cpp/ownership.md)
+    - [参照と借用](by-language/from-cpp/borrowing.md)
+    - [スマートポインタ](by-language/from-cpp/smart-pointers.md)
   - [Java から](by-language/from-java.md)
 
 ---

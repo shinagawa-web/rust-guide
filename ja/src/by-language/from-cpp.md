@@ -35,17 +35,16 @@ C++ とほぼそのまま通じるもの
 C++ と同じ感覚では書けないところ
 
 2. [所有権とムーブ](from-cpp/ownership.md) — 5 原則と `std::move` が所有権に置き換えられる
-3. コピーと Clone — 暗黙の値セマンティクスから、明示的な clone へ
-4. 参照と借用 — ダングリング参照をコンパイル時に封じる
-5. スマートポインタ — `unique_ptr` → `Box` / `shared_ptr` → `Rc`・`Arc`
-6. RAII とリソース管理 — デストラクタから `Drop` トレイトへ
-7. enum と Option — `union` と `nullptr` を型で置き換える
-8. エラー処理 — 例外から `Result` と `?` へ
-9. ジェネリクスとトレイト — テンプレートから、制約を持つジェネリクスへ
-10. 演算子オーバーロード — `operator` を trait に対応させる
-11. 並行性 — データ競合を型で防ぐ
-12. unsafe と FFI — C++ コードとの相互運用
-13. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
+3. [参照と借用](from-cpp/borrowing.md) — ダングリング参照をコンパイル時に封じる
+4. [スマートポインタ](from-cpp/smart-pointers.md) — `unique_ptr` → `Box` / `shared_ptr` → `Rc`・`Arc`
+5. RAII とリソース管理 — デストラクタから `Drop` トレイトへ
+6. enum と Option — `union` と `nullptr` を型で置き換える
+7. エラー処理 — 例外から `Result` と `?` へ
+8. ジェネリクスとトレイト — テンプレートから、制約を持つジェネリクスへ
+9. 演算子オーバーロード — `operator` を trait に対応させる
+10. 並行性 — データ競合を型で防ぐ
+11. unsafe と FFI — C++ コードとの相互運用
+12. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
 
 最後に
 
