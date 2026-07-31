@@ -133,6 +133,7 @@
     - [参照と借用](by-language/from-cpp/borrowing.md)
     - [スマートポインタ](by-language/from-cpp/smart-pointers.md)
     - [enum と match](by-language/from-cpp/enum.md)
+    - [nullptr と Option](by-language/from-cpp/option.md)
   - [Java から](by-language/from-java.md)
 
 ---
