@@ -132,6 +132,7 @@
     - [所有権とムーブ](by-language/from-cpp/ownership.md)
     - [参照と借用](by-language/from-cpp/borrowing.md)
     - [スマートポインタ](by-language/from-cpp/smart-pointers.md)
+    - [enum と match](by-language/from-cpp/enum.md)
   - [Java から](by-language/from-java.md)
 
 ---
