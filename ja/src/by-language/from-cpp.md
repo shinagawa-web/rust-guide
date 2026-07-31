@@ -45,7 +45,7 @@ C++ と同じ感覚では書けないところ
 10. [演算子オーバーロード](from-cpp/operator-overloading.md) — `operator` を trait に対応させる
 11. [並行性](from-cpp/concurrency.md) — データ競合を型で防ぐ
 12. [C・C++ との相互運用](from-cpp/unsafe.md) — unsafe と extern "C" で既存資産を呼ぶ
-13. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
+13. [ビルドと依存管理](from-cpp/cargo.md) — CMake/vcpkg から Cargo へ
 
 最後に
 
