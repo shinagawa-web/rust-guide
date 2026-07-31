@@ -39,7 +39,7 @@ C++ と同じ感覚では書けないところ
 4. [スマートポインタ](from-cpp/smart-pointers.md) — `unique_ptr` → `Box` / `shared_ptr` → `Rc`・`Arc`
 5. [enum と match](from-cpp/enum.md) — バリアントにデータを持たせ、match で網羅する
 6. [nullptr と Option](from-cpp/option.md) — `nullptr` を型で置き換える
-7. エラー処理 — 例外から `Result` と `?` へ
+7. [エラー処理](from-cpp/error.md) — 例外から `Result` と `?` へ
 8. ジェネリクスとトレイト — テンプレートから、制約を持つジェネリクスへ
 9. 演算子オーバーロード — `operator` を trait に対応させる
 10. 並行性 — データ競合を型で防ぐ
