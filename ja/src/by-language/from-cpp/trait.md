@@ -1,5 +1,41 @@
 # トレイト
 
+C++ で「この型にはこのメソッドがある」という約束を表すには、純粋仮想関数を持つ基底クラスを使います。Rust ではこれが `trait` になります。
+
+```cpp
+// C++
+struct Greet {
+    virtual std::string hello() const = 0;
+    virtual ~Greet() = default;
+};
+
+struct English : Greet {
+    std::string hello() const override { return "Hello"; }
+};
+```
+
+```rust
+// Rust
+trait Greet {
+    fn hello(&self) -> String;
+}
+
+struct English;
+
+impl Greet for English {
+    fn hello(&self) -> String {
+        String::from("Hello")
+    }
+}
+
+fn main() {
+    let e = English;
+    println!("{}", e.hello());
+}
+```
+
+C++ では基底クラスを「継承」しますが、Rust では `impl Trait for Type` の形で型に振る舞いを「実装」します。
+
 ## 純粋仮想関数と trait
 
 C++ で「複数の型に共通の振る舞いを持たせる」には、純粋仮想関数を含む基底クラスを定義して、それを継承させます。

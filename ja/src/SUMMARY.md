@@ -136,6 +136,7 @@
     - [nullptr と Option](by-language/from-cpp/option.md)
     - [エラー処理](by-language/from-cpp/error.md)
     - [トレイト](by-language/from-cpp/trait.md)
+    - [テンプレートとジェネリクス](by-language/from-cpp/generics.md)
   - [Java から](by-language/from-java.md)
 
 ---
