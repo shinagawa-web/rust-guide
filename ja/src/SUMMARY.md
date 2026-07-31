@@ -135,6 +135,7 @@
     - [enum と match](by-language/from-cpp/enum.md)
     - [nullptr と Option](by-language/from-cpp/option.md)
     - [エラー処理](by-language/from-cpp/error.md)
+    - [トレイト](by-language/from-cpp/trait.md)
   - [Java から](by-language/from-java.md)
 
 ---

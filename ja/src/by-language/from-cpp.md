@@ -40,11 +40,12 @@ C++ と同じ感覚では書けないところ
 5. [enum と match](from-cpp/enum.md) — バリアントにデータを持たせ、match で網羅する
 6. [nullptr と Option](from-cpp/option.md) — `nullptr` を型で置き換える
 7. [エラー処理](from-cpp/error.md) — 例外から `Result` と `?` へ
-8. ジェネリクスとトレイト — テンプレートから、制約を持つジェネリクスへ
-9. 演算子オーバーロード — `operator` を trait に対応させる
-10. 並行性 — データ競合を型で防ぐ
-11. unsafe と FFI — C++ コードとの相互運用
-12. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
+8. [トレイト](from-cpp/trait.md) — 純粋仮想関数・継承から trait へ
+9. ジェネリクス — テンプレートから、制約を持つジェネリクスへ
+10. 演算子オーバーロード — `operator` を trait に対応させる
+11. 並行性 — データ競合を型で防ぐ
+12. unsafe と FFI — C++ コードとの相互運用
+13. ビルドとエコシステム — ヘッダ/CMake から Cargo へ
 
 最後に
 
