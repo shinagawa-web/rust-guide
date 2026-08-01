@@ -85,7 +85,7 @@ C++ では、変数から変数へ値を渡すとデフォルトでコピーが�
 ```cpp
 // C++
 std::string a = "hello";
-std::string b = a;   // "hello" がヒープごとコピーされる
+std::string b = a;   // "hello" の中身がコピーされる
 // a も b も使える
 ```
 
@@ -104,9 +104,9 @@ std::string b = std::move(a);   // a の中身が b へ移る
 static_cast<std::remove_reference_t<T>&&>(a)
 ```
 
-`a` を右辺値参照（rvalue reference）へキャストするだけで、中身は変わりません。C++ は代入のとき、右辺が lvalue（名前のついた変数）ならコピーコンストラクタを、rvalue（一時オブジェクトや `std::move` でキャストしたもの）ならムーブコンストラクタを選びます。`std::move` は lvalue を「rvalue として扱っていい」とマークする道具で、実際のポインタの移し替えはムーブコンストラクタが行います。
+`a` を右辺値参照（rvalue reference）へキャストするだけで、中身は変わりません。C++ は代入のとき、右辺が lvalue（名前のついた変数）ならコピーコンストラクタを、rvalue（一時オブジェクトや `std::move` でキャストしたもの）なら通常ムーブコンストラクタを選びます。`std::move` は lvalue を「rvalue として扱っていい」とマークする道具で、実際のポインタの移し替えはムーブコンストラクタが行います。
 
-デフォルトがコピーなので、ヒープを持つクラスにはコピーとムーブの両方を定義する必要があります。
+デフォルトがコピーなので、ヒープを持つクラスにコピーとムーブを両方持たせる場合は、両方を明示的に定義する必要があります。
 
 ```cpp
 // C++
@@ -115,9 +115,9 @@ struct MyClass {
     MyClass(int v) : n(new int(v)) {}
     ~MyClass() { delete n; }
 
-    MyClass(const MyClass& o) : n(new int(*o.n)) {}        // コピーコンストラクタ
-    MyClass& operator=(const MyClass& o) {                  // コピー代入演算子
-        if (this != &o) { delete n; n = new int(*o.n); }
+    MyClass(const MyClass& o) : n(o.n ? new int(*o.n) : nullptr) {} // コピーコンストラクタ
+    MyClass& operator=(const MyClass& o) {                           // コピー代入演算子
+        if (this != &o) { delete n; n = o.n ? new int(*o.n) : nullptr; }
         return *this;
     }
     MyClass(MyClass&& o) noexcept : n(o.n) { o.n = nullptr; }  // ムーブコンストラクタ
@@ -128,7 +128,7 @@ struct MyClass {
 };
 ```
 
-コピーコンストラクタ・コピー代入演算子・ムーブコンストラクタ・ムーブ代入演算子・デストラクタの5つが揃ってはじめて安全に扱えます（Rule of Five）。リソースを1つ持つだけのクラスに、これだけの記述が必要になります。
+コピーとムーブの両方を安全に扱うには、コピーコンストラクタ・コピー代入演算子・ムーブコンストラクタ・ムーブ代入演算子・デストラクタの5つを定義することが指針とされています（Rule of Five）。リソースを1つ持つだけのクラスに、これだけの記述が必要になります。
 
 Rust では代入がデフォルトでムーブになります。`std::move` は要りません。
 
@@ -142,7 +142,7 @@ fn main() {
 
 C++ でこの区別が必要だったのは、デフォルトがコピーで、ムーブを選ばせるためにキャストが必要だったからです。Rust ではデフォルトがムーブなので、lvalue / rvalue の区別を導入する理由がありません。
 
-コピーが必要なときは `.clone()` と書きます。
+`String` のように `Copy` を実装しない型を複製したいときは `.clone()` と書きます。
 
 ```rust
 // Rust
@@ -153,7 +153,7 @@ fn main() {
 }
 ```
 
-デフォルトがムーブなので、コピーとムーブを区別する必要がなく、5原則は要りません。
+デフォルトがムーブなので、`String` のような型にコピーとムーブの両方を手で定義する必要がなく、5原則は要りません。
 
 ## ムーブ後の変数
 
@@ -162,6 +162,7 @@ fn main() {
 ```cpp
 // C++
 #include <string>
+#include <utility>
 #include <iostream>
 
 int main() {
