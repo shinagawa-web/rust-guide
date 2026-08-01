@@ -141,6 +141,7 @@
     - [並行性](by-language/from-cpp/concurrency.md)
     - [C・C++ との相互運用](by-language/from-cpp/unsafe.md)
     - [ビルドと依存管理](by-language/from-cpp/cargo.md)
+    - [C++ から Rust へ、ここまで](by-language/from-cpp/wrap-up.md)
   - [Java から](by-language/from-java.md)
 
 ---
