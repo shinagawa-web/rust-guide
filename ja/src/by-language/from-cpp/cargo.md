@@ -130,11 +130,62 @@ g++ -std=c++11 main.cpp point.cpp -o point && ./point
 
 Rust にはヘッダファイルがありません。コンパイラがクレート全体のソースを把握しているので、テキストをコピーして宣言を伝える仕組みが不要です。代わりに `mod` キーワードでモジュールを定義し、外部に見せたいものだけ `pub` を付けます。
 
-`pub struct Point` と書いても、フィールドのアクセス権は別に制御されます。フィールドに `pub` を付けなければ、モジュールの外から直接触ることはできません。このセクションの例では `x` と `y` を非公開にしたまま、`new` だけを `pub` にしています。外から値を作る手段は `new` に絞られ、フィールドの直接操作はコンパイルエラーになります。
+```rust
+mod point {
+    pub fn greet() {
+        println!("hello from point");
+    }
+
+    fn internal() {
+        println!("internal only");
+    }
+}
+
+fn main() {
+    point::greet();     // OK
+    // point::internal(); // コンパイルエラー
+}
+```
+
+`pub struct` は型名を外から使えるようにするだけです。フィールドを直接読み書きするには、フィールドにも `pub` が必要です。
 
 ```rust
 mod point {
-    #[derive(Debug)]
+    pub struct Point {
+        x: i32,
+        y: i32,
+    }
+}
+
+fn main() {
+    let p = point::Point { x: 3, y: 4 }; // コンパイルエラー
+}
+```
+
+```text
+error[E0451]: field `x` of struct `Point` is private
+```
+
+フィールドに `pub` を付ければ、モジュールの外から直接アクセスできます。
+
+```rust
+mod point {
+    pub struct Point {
+        pub x: i32,
+        pub y: i32,
+    }
+}
+
+fn main() {
+    let p = point::Point { x: 3, y: 4 };
+    println!("{}", p.x); // 3
+}
+```
+
+フィールドを非公開にしたまま `new` と `coords` のような公開メソッドを用意すれば、生成と読み出しの手段をメソッド経由に限定できます。
+
+```rust
+mod point {
     pub struct Point {
         x: i32,
         y: i32,
@@ -144,15 +195,27 @@ mod point {
         pub fn new(x: i32, y: i32) -> Point {
             Point { x, y }
         }
+
+        pub fn coords(&self) -> (i32, i32) {
+            (self.x, self.y)
+        }
     }
 }
 
-use point::Point;
-
 fn main() {
-    let p = Point::new(3, 4);
-    println!("{:?}", p); // Point { x: 3, y: 4 }
+    let p = point::Point::new(3, 4);
+    let (x, y) = p.coords();
+    println!("({}, {})", x, y); // (3, 4)
 }
 ```
 
-`#[derive(Debug)]` を付けると `{:?}` で中身を出力できます。`use point::Point;` で型名を現在のスコープに取り込むと、毎回 `point::Point` と書かずに `Point` だけで参照できます。
+`use point::Point;` で型名を現在のスコープに取り込むと、毎回 `point::Point` と書かずに `Point` だけで参照できます。
+
+```rust
+use point::Point;
+
+fn main() {
+    let p = Point::new(3, 4);       // Point だけで書ける
+    // point::Point::new(3, 4);     // use なしはこう書く
+}
+```
