@@ -82,7 +82,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0515]: cannot return reference to local variable `local`
  --> src/main.rs:4:5
   |
@@ -182,7 +182,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0502]: cannot borrow `x` as immutable because it is also borrowed as mutable
  --> src/main.rs:8:19
   |

@@ -82,7 +82,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0277]: `Mutex<i32>` doesn't implement `std::fmt::Display`
 ```
 
@@ -182,7 +182,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0277]: `Rc<RefCell<i32>>` cannot be sent between threads safely
   = help: within `{closure}`, the trait `Send` is not implemented for `Rc<RefCell<i32>>`
 note: required by a bound in `spawn`

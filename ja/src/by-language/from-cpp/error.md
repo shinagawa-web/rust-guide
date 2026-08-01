@@ -99,7 +99,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0004]: non-exhaustive patterns: `Err(_)` not covered
 ```
 

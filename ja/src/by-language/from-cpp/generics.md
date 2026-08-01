@@ -61,7 +61,7 @@ int main() {
 }
 ```
 
-```
+```text
 error: invalid operands to binary expression ('Point' and 'Point')
     return a + b;
            ~ ^ ~
@@ -110,7 +110,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0277]: cannot add `Point` to `Point`
     let _ = add(p, q);
             ^^^ no implementation for `Point + Point`

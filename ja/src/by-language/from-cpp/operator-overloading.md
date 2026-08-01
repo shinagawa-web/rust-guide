@@ -67,7 +67,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0382]: borrow of moved value: `p`
 ```
 

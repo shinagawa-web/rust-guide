@@ -150,6 +150,6 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0046]: not all trait items implemented, missing: `area`
 ```

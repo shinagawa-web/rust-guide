@@ -167,7 +167,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0004]: non-exhaustive patterns: `&Shape::Rect(_, _)` not covered
 ```
 

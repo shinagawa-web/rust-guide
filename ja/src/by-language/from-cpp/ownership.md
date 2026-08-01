@@ -185,7 +185,7 @@ fn main() {
 }
 ```
 
-```
+```text
 error[E0382]: borrow of moved value: `a`
  --> src/main.rs:4:20
   |
